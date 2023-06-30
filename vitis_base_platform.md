@@ -28,5 +28,12 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
 ## Step 2: Create a Vitis Platform
 1. Download and install the ZYNQMP common image from [Xilinx's download page](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-platforms.html). Untar it to a directory of choice:
     ```shell
-    tar xzf xilinx-zynqmp-common-v2023.1.tar.gz ~/workspace
+    tar xzf xilinx-zynqmp-common-v2023.1.tar.gz -C ~/workspace
     ```
+2. Install the `sysroot`:
+    ```shell
+    cd ~/workspace/xilinx-zynqmp-common-v2023.1
+    ./sdk.sh -d ./sysroot
+    ```
+
+3. Create a Vitis Platform project:
