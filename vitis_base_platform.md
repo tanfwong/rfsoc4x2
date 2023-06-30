@@ -31,42 +31,42 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
     tar xzf xilinx-zynqmp-common-v2023.1.tar.gz -C ~/workspace
     ```
 2. Install the `sysroot`:
-    ```shell
-    cd ~/workspace/xilinx-zynqmp-common-v2023.1
-    ./sdk.sh -d .
-    ```
+   ```shell
+   cd ~/workspace/xilinx-zynqmp-common-v2023.1
+   ./sdk.sh -d .
+   ```
 
 3. Create a Vitis Platform project:
-   - Start `xsct`:
-        ```shell
-        cd ~/workspace
-        xsct
-        ```
-   - Once in the `xsct` terminal, execute the following commands to create a Vitis platform project:
-        ```tcl
-        setws .
-        platform create -name rfsoc_base_vitis_platform \
-            -desc "A base-XRT Vitis platform for the RFSoC4x2 board" \
-            -hw rfsoc_base_hardware/rfsoc_base_hardware.xsa \
-            -hw_emu rfsoc_base_hardware/rfsoc_base_hardware_emu.xsa \
-            -out .
-        domain create -name xrt -proc psu_cortexa53 -os linux \
-            -arch {64-bit} -runtime {ocl}  -bootmode {sd}
-        platform write
-        platform generate
-        exit
-        ```
-      For some unknown reason, my X11 server (XQuartz) didn't let me create a platform project using the Vitis GUI.
-      That's why I used `xsct` above. Also, the Vitis GUI doesn't allow specifying the two different .xsa files for
-      hardware and hardware emulation.
-    - Open up the Vitis GUI:
-       ```shell
-       vitis
-       ```
-      If the platform project doesn't show up in the **Explorer** window, go to **Vitis->XSCT Console** to open up
-      an xsct console and type the following command:
-       ```tcl
-       importprojects rfsoc_base_vitis_platform
-       ```
-      The platform project created above should show up in the **Explorer** window.
+ - Start `xsct`:
+   ```shell
+   cd ~/workspace
+   xsct
+   ```
+ - Once in the `xsct` terminal, execute the following commands to create a Vitis platform project:
+   ```tcl
+   setws .
+   platform create -name rfsoc_base_vitis_platform \
+       -desc "A base-XRT Vitis platform for the RFSoC4x2 board" \
+       -hw rfsoc_base_hardware/rfsoc_base_hardware.xsa \
+       -hw_emu rfsoc_base_hardware/rfsoc_base_hardware_emu.xsa \
+       -out .
+   domain create -name xrt -proc psu_cortexa53 -os linux \
+       -arch {64-bit} -runtime {ocl}  -bootmode {sd}
+   platform write
+   platform generate
+   exit
+   ```
+   For some unknown reason, my X11 server (XQuartz) didn't let me create a platform project using the Vitis GUI.
+   That's why I used `xsct` above. Also, the Vitis GUI doesn't allow specifying the two different .xsa files for
+   hardware and hardware emulation.
+ - Open up the Vitis GUI:
+   ```shell
+   vitis
+   ```
+   If the platform project doesn't show up in the **Explorer** window, go to **Vitis->XSCT Console** to open up
+   an xsct console and type the following command:
+   ```tcl
+   importprojects rfsoc_base_vitis_platform
+   ```
+   The platform project created above should now show up in the **Explorer** window.
     
