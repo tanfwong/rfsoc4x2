@@ -37,3 +37,19 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
     ```
 
 3. Create a Vitis Platform project:
+    ```shell
+    cd ~/workspace
+    xsct
+    setws .
+    platform create -name rfsoc_base_vitis_platform \
+        -desc "A base-XRT Vitis platform for the RFSoC4x2 board" \
+        -hw rfsoc_base_hardware/rfsoc_base_hardware.xsa \
+        -hw_emu rfsoc_base_hardware/rfsoc_base_hardware_emu.xsa \
+        -out .
+    domain create -name xrt -proc psu_cortexa53 -os linux \
+        -arch {64-bit} -runtime {ocl}  -bootmode {sd}
+    platform write
+    platform generate
+    exit
+    ```
+    
