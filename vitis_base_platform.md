@@ -21,9 +21,9 @@ Follow the steps in [Vitis Platform Creation Tutorial
 for
 ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platform_Creation/Design_Tutorials/02-Edge-AI-ZCU104/step1.md) to generate the hardware `.xsa` files by selecting the RFSoC4x2 board instead when creating the Vivado project. 
 
-I named the Vivado project `rfsoc_base_platform` in `~/workspace` and generated the files:
-- `rfsoc_base_platform_hw.xsa` for hardware
-- `rfsoc_base_platform_hwemu.xsa` for hardware emulation
+I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated the files:
+- `rfsoc_base_hardware.xsa` for hardware
+- `rfsoc_base_hardware_emu.xsa` for hardware emulation
 
 ## Step 2: Create a Vitis Platform
 1. Download and install the ZYNQMP common image from [Xilinx's download page](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-platforms.html). Untar it to a directory of choice:
