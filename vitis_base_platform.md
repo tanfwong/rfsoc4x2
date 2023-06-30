@@ -33,7 +33,7 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
 2. Install the `sysroot`:
     ```shell
     cd ~/workspace/xilinx-zynqmp-common-v2023.1
-    ./sdk.sh -d ./sysroot
+    ./sdk.sh -d .
     ```
 
 3. Create a Vitis Platform project:
