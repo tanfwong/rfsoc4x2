@@ -19,7 +19,7 @@ to the RFSoC4x2 board.
 ## Step 1: Create a Hardware Platform
 Follow the steps in [Vitis Platform Creation Tutorial
 for
-ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platform_Creation/Design_Tutorials/02-Edge-AI-ZCU104/step1.md) to generate the hardware `.xsa` files, except of course select the RFSoC4x2 board instead. 
+ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platform_Creation/Design_Tutorials/02-Edge-AI-ZCU104/step1.md) to generate the hardware `.xsa` files by selecting the RFSoC4x2 board instead when creating the Vivado project. 
 
 I named the Vivado project `rfsoc_base_platform` in `~/workspace` and generated the files:
 - `rfsoc_base_platform_hw.xsa` for hardware
