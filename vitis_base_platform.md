@@ -52,6 +52,7 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
        -out .
    domain create -name xrt -proc psu_cortexa53 -os linux \
        -arch {64-bit} -runtime {ocl}  -bootmode {sd}
+   domain config -generate-bif
    platform write
    platform generate
    exit
