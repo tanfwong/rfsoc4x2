@@ -119,11 +119,11 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
    - Open `platform.spr` in the **<em>Explorer</em>** window (**<em>right-click->Open</em>**)
    - Select `xrt` in the opened tab in the main window
    - Under `Domain:xrt` field:
-     - `Bif File:` - Click downarrow in the `Browse` button to select `Generate Bif`.
-     - `Boot Components Directory:` - Click the `Browse` button to select `~/workspace/rfsoc_base_vitis_platform/boot`.
-     - `FAT32 Partition Directory:` - Click the `Browse` button to select `~/workspace/rfsoc_base_vitis_platform/fat32`.
-     - `Display Name:` - Change as wish.
-     - `Description:` - Change as wish.
+     - `Bif File:` Click downarrow in the `Browse` button to select `Generate Bif`.
+     - `Boot Components Directory:` Click the `Browse` button to select `~/workspace/rfsoc_base_vitis_platform/boot`.
+     - `FAT32 Partition Directory:` Click the `Browse` button to select `~/workspace/rfsoc_base_vitis_platform/fat32`.
+     - `Display Name:` Change as wish.
+     - `Description:` Change as wish.
      - **Leave `Linux Rootfs:` and `Sysroot Directory:` empty**.
  - Build the platform by click the **hammer** button.
    After the build, built Vitis platform is in `~/workspace/rfsoc_base_vitis_platform/export/rfsoc_base_vitis_platform`.
@@ -149,8 +149,8 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
    Select the platform to use.
  - Give the project a name, say `vadd`.
  - Under `Application settings` field:
-   - `Sysroot path:` - Click the `Browse` button to select `~/workspace/xilinx-zynqmp-common-v2023.1/sysroots/cortexa72-cortexa53-xilinx-linux`.
-   - `Root FS:` - Click the `Browse` button to select `~/workspace/xilinx-zynqmp-common-v2023.1/rootfs.ext4`.
+   - `Sysroot path:` Click the `Browse` button to select `~/workspace/xilinx-zynqmp-common-v2023.1/sysroots/cortexa72-cortexa53-xilinx-linux`.
+   - `Root FS:` Click the `Browse` button to select `~/workspace/xilinx-zynqmp-common-v2023.1/rootfs.ext4`.
    - `Kernel Image:` Click the `Browse` button to select `~/workspace/xilinx-zynqmp-common-v2023.1/Image`.
  - Select the `Simple Vector Addition` template to finish up the application project creation step.
   
