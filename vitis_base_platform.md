@@ -128,7 +128,6 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
  - Build the platform by click the **hammer** button.
    After the build, built Vitis platform is in `~/workspace/rfsoc_base_vitis_platform/export/rfsoc_base_vitis_platform`.
    The **<em>Explorer</em>** window in the figure below shows all the files generated in the `export` directory:
-   ```{figure} ./Figures/vitis_base_platform_fig1.png
-   ```
+   ![export](Figures/vitis_base_platform_fig1.png)
  - 
     
