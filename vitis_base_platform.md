@@ -119,18 +119,18 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
    - Open `platform.spr` in the **<em>Explorer</em>** window (**<em>right-click->Open</em>**)
    - Select `xrt` in the opened tab in the main window
    - Under `Domain:xrt` field:
-     - `Bif File:` - Click downarrow in `Browse` button to select `Generate Bif`
-     - `Boot Components Directory:` - Click `Browse` button to select `~/workspace/rfsoc_base_vitis_platform/boot`
-     - `FAT32 Partition Directory:` - Click `Browse` button to select `~/workspace/rfsoc_base_vitis_platform/fat32`
-     - `Display Name:` - Change as wish
-     - `Description:` - Chnage as wish
-     - **Leave `Linux Rootfs:` and `Sysroot Directory:` empty**
+     - `Bif File:` - Click downarrow in `Browse` button to select `Generate Bif`.
+     - `Boot Components Directory:` - Click `Browse` button to select `~/workspace/rfsoc_base_vitis_platform/boot`.
+     - `FAT32 Partition Directory:` - Click `Browse` button to select `~/workspace/rfsoc_base_vitis_platform/fat32`.
+     - `Display Name:` - Change as wish.
+     - `Description:` - Change as wish.
+     - **Leave `Linux Rootfs:` and `Sysroot Directory:` empty**.
  - Build the platform by click the **hammer** button.
    After the build, built Vitis platform is in `~/workspace/rfsoc_base_vitis_platform/export/rfsoc_base_vitis_platform`.
    The **<em>Explorer</em>** window in the figure below shows all the files generated in the `export` directory:
    ![export](Figures/vitis_base_platform_fig1.png)
  - Fix the `linux.bif` file:
-   - Select and open the `linux.bif` file from the **<em>Explorer</em>**
+   - Select and open the `linux.bif` file from the **<em>Explorer</em>**.
    - Change the two lines from:
      ```
      [bootloader] <fsbl.elf>
@@ -141,4 +141,14 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
      [bootloader] <rfsoc_base_vitis_platform/boot/fsbl.elf>
      [pmufw_image] <rfsoc_base_vitis_platform/boot/pmufw.elf>
      ```
-    
+
+## Step 3: Test the Vitis Platform
+1. Create a new **Vector Addition** application from template:
+ - Go to **<em>File->New->Application Project...</em>** to create a new application project.
+ - The `rfsoc_base_vitis_platform` created in Step 2 should show up (if it doesn't, you can press the **+** button to add it).
+   Select the platform to use.
+ - Give the project a name, say `vadd`.
+ - Under `Application settings` field:
+   - `Sysroot path:` - Click the `Browse` button to select `~/workspace/xilinx-zynqmp-common-v2023.1/sysroots/cortexa72-cortexa53-xilinx-linux`.
+   - `Root FS:` - Click the `Browse` button to select `~/workspace/xilinx-zynqmp-common-v2023.1/rootfs.ext4`.
+   - `Kernel Image:` Click the `Browse` button to select `~/workspace/xilinx-zynqmp-common-v2023.1/Image`.
