@@ -4,7 +4,7 @@ for
 ZCU104](https://github.com/Xilinx/Vitis-Tutorials/tree/2023.1/Vitis_Platform_Creation/Design_Tutorials/02-Edge-AI-ZCU104)
 to the RFSoC4x2 board. 
 
-## Step 0: Install the board files for RFSoC4x2
+## Step 0: Install the board files for RFSoC4x2 
 1. Get the board files from the [RealDigital repo](https://github.com/RealDigitalOrg/RFSoC4x2-BSP)
     ```shell
     git clone https://github.com/RealDigitalOrg/RFSoC4x2-BSP.git ~/workspace/RFSoC4x2-BSP
@@ -55,11 +55,17 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
    domain config -generate-bif
    platform write
    platform generate
-   exit
    ```
+   The platform is now created in `~/workspace/rfsoc_base_vitis_platform`.
    For some unknown reason, my X11 server (XQuartz) didn't let me create a platform project using the Vitis GUI.
    That's why I used `xsct` above. Also, the Vitis GUI doesn't allow specifying the two different .xsa files for
    hardware and hardware emulation.
+
+3. Generate the device tree:
+   - Within the xsct terminal, continue
+     ```tcl
+     ```
+5.  
  - Open up the Vitis GUI:
    ```shell
    vitis
