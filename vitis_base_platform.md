@@ -152,3 +152,8 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
    - `Sysroot path:` - Click the `Browse` button to select `~/workspace/xilinx-zynqmp-common-v2023.1/sysroots/cortexa72-cortexa53-xilinx-linux`.
    - `Root FS:` - Click the `Browse` button to select `~/workspace/xilinx-zynqmp-common-v2023.1/rootfs.ext4`.
    - `Kernel Image:` Click the `Browse` button to select `~/workspace/xilinx-zynqmp-common-v2023.1/Image`.
+ - Select the `Simple Vector Addition` template to finish up the application project creation step.
+  
+2. Follow the steps in [Vitis Platform Creation Tutorial
+for
+ZCU104-Step 3](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platform_Creation/Design_Tutorials/02-Edge-AI-ZCU104/step3.md) to build and test the **Vector Addition** application.
