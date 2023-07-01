@@ -20,6 +20,8 @@ to the RFSoC4x2 board.
 3. Get Xilinx's device tree repo:
    ```shell
    git clone https://github.com/Xilinx/device-tree-xlnx ~/workspace/device-tree-xlnx
+   cd device-tree-xlnx
+   git checkout xlnx_rel_v2023.1
    ```
    
 ## Step 1: Create a Vivado Hardware Design
@@ -68,9 +70,15 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
    hardware and hardware emulation.
 
 3. Generate the device tree:
-   - Within the xsct terminal, continue
-     ```tcl
-     ```
+ - Within the xsct terminal, continue
+   ```tcl
+   hsi open_hw_design rfsoc_base_hardware/rfsoc_base_hardware.xsa
+   hsi set_repo_path ./device-tree-xlnx/
+   hsi create_sw_design device-tree -os device_tree -proc psu_cortexa53_0
+   hsi set_property CONFIG.bootargs "console=ttyPS0,115200 root=/dev/mmcblk0p2 rw" [hsi::get_os]
+   hsi generate_target -dir ./rfsoc_base_vitis_platform/device_tree
+   hsi close_hw_design [hsi current_hw_design]
+   ```
 5.  
  - Open up the Vitis GUI:
    ```shell
