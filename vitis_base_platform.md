@@ -129,5 +129,16 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
    After the build, built Vitis platform is in `~/workspace/rfsoc_base_vitis_platform/export/rfsoc_base_vitis_platform`.
    The **<em>Explorer</em>** window in the figure below shows all the files generated in the `export` directory:
    ![export](Figures/vitis_base_platform_fig1.png)
- - 
+ - Fix the `linux.bif` file:
+   - Select and open the `linux.bif` file from the **<em>Explorer</em>**
+   - Change the two lines from:
+     ```
+     [bootloader] <fsbl.elf>
+     [pmufw_image] <pmufw.elf>
+     ```
+     to
+     ```
+     [bootloader] <rfsoc_base_vitis_platform/boot/fsbl.elf>
+     [pmufw_image] <rfsoc_base_vitis_platform/boot/pmufw.elf>
+     ```
     
