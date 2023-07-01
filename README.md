@@ -8,6 +8,6 @@ goals are to use the board as a teaching platform for the course
 Florida](https://www.ece.ufl.edu) and to do some SDR development with
 it.
 
-As I'm learning to use the RFSoC4x2 board, I want to use this
+As I'm learning how to use the RFSoC4x2 board, I want to use this
 repository to jot down my notes on experimenting with the board:
 1. [Port <em>Vitis Platform Creation Tutorial for ZCU104</em> to RFSoC4x2](./vitis_base_platform.md)
