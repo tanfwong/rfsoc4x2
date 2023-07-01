@@ -4,18 +4,24 @@ for
 ZCU104](https://github.com/Xilinx/Vitis-Tutorials/tree/2023.1/Vitis_Platform_Creation/Design_Tutorials/02-Edge-AI-ZCU104)
 to the RFSoC4x2 board. 
 
-## Step 0: Install the board files for RFSoC4x2 
+## Step 0: Install the RFSoC4x2 board files and Xilinx's device tree repo
 1. Get the board files from the [RealDigital repo](https://github.com/RealDigitalOrg/RFSoC4x2-BSP)
-    ```shell
-    git clone https://github.com/RealDigitalOrg/RFSoC4x2-BSP.git ~/workspace/RFSoC4x2-BSP
-    ```
+   ```shell
+   git clone https://github.com/RealDigitalOrg/RFSoC4x2-BSP.git ~/workspace/RFSoC4x2-BSP
+   ```
     The board files are in  `~/workspace/RFSoC4x2-BSP/board_files/rfsoc4x2`.
   
 2. Add the board files to Vivado:
-    Add the following line to Vivado startup script `~/.Xilinx/Vivado/Vivado_int.tcl` (if the file doesn't exist, add it):
-    ```tcl
-    set_param board.repoPaths [list "<full path to home directory>/workspace/RFSoC4x2-BSP"]
-    ```
+   Add the following line to Vivado startup script `~/.Xilinx/Vivado/Vivado_int.tcl` (if the file doesn't exist, add it):
+   ```tcl
+   set_param board.repoPaths [list "<full path to home directory>/workspace/RFSoC4x2-BSP"]
+   ```
+
+3. Get Xilinx's device tree repo:
+   ```shell
+   git clone https://github.com/Xilinx/device-tree-xlnx ~/workspace/device-tree-xlnx
+   ```
+   
 ## Step 1: Create a Vivado Hardware Design
 Follow the steps in [Vitis Platform Creation Tutorial
 for
