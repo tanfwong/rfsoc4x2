@@ -4,10 +4,10 @@ for
 ZCU104](https://github.com/Xilinx/Vitis-Tutorials/tree/2023.1/Vitis_Platform_Creation/Design_Tutorials/02-Edge-AI-ZCU104)
 to the RFSoC4x2 board. 
 
-## Step 0: Install the RFSoC4x2 board files and Xilinx's device tree repo
+## Step 0: Install the RFSoC4x2 board files and Xilinx's repos
 1. Get the board files from the [RealDigital repo](https://github.com/RealDigitalOrg/RFSoC4x2-BSP)
    ```shell
-   git clone https://github.com/RealDigitalOrg/RFSoC4x2-BSP.git ~/workspace/RFSoC4x2-BSP
+   git clone https://github.com/RealDigitalOrg/RFSoC4x2-BSP.git ~/workspace/
    ```
     The board files are in  `~/workspace/RFSoC4x2-BSP/board_files/rfsoc4x2`.
   
@@ -19,11 +19,22 @@ to the RFSoC4x2 board.
 
 3. Get Xilinx's device tree repo:
    ```shell
-   git clone https://github.com/Xilinx/device-tree-xlnx ~/workspace/device-tree-xlnx
+   git clone https://github.com/Xilinx/device-tree-xlnx ~/workspace/
    cd device-tree-xlnx
    git checkout xlnx_rel_v2023.1
    ```
-   
+
+4. Download and install the ZYNQMP common image from [Xilinx's download page](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-platforms.html). Untar it to a directory of choice:
+   ```shell
+   tar xzf xilinx-zynqmp-common-v2023.1.tar.gz -C ~/workspace/
+   ```
+
+5. Install the `sysroot`:
+   ```shell
+   cd ~/workspace/xilinx-zynqmp-common-v2023.1
+   ./sdk.sh -d .
+   ```
+
 ## Step 1: Create a Vivado Hardware Design
 Follow the steps in [Vitis Platform Creation Tutorial
 for
@@ -33,18 +44,8 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
 - `rfsoc_base_hardware.xsa` for hardware
 - `rfsoc_base_hardware_emu.xsa` for hardware emulation
 
-## Step 2: Create a Vitis Platform
-1. Download and install the ZYNQMP common image from [Xilinx's download page](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-platforms.html). Untar it to a directory of choice:
-    ```shell
-    tar xzf xilinx-zynqmp-common-v2023.1.tar.gz -C ~/workspace
-    ```
-2. Install the `sysroot`:
-   ```shell
-   cd ~/workspace/xilinx-zynqmp-common-v2023.1
-   ./sdk.sh -d .
-   ```
-
-3. Create a Vitis Platform project:
+## Step 2: Create a Vitis Platform 
+1. Create a Vitis Platform project:
  - Start `xsct`:
    ```shell
    cd ~/workspace
@@ -69,7 +70,7 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
    That's why I used `xsct` above. Also, the Vitis GUI doesn't allow specifying the two different .xsa files for
    hardware and hardware emulation.
 
-3. Generate the device tree blob:
+2. Generate the device tree blob:
  - Within the xsct terminal, continue
    ```tcl
    hsi open_hw_design rfsoc_base_hardware/rfsoc_base_hardware.xsa
@@ -88,17 +89,31 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
    dtc -I dts -O dtb -o system.dtb system.dts
    ```
 
-4. Copy `system.dtb` and boot files from common image:
+3. Copy `system.dtb` and boot files from the common image:
+ - Make the following two directories for convenience:
+   ```shell
+   cd ..
+   mkdir boot fat32
+   ```
+ - Copy `system.dtb` and other boot files to the directories:
+   ```shell
+   cp device_tree/system.dtb boot
+   cp device_tree/system.dtb fat32
+   cp ~/workspace/xilinx-zynqmp-common-v2023.1/boot.scr fat32
+   cp ~/workspace/xilinx-zynqmp-common-v2023.1/bl31.elf boot
+   cp ~/workspace/xilinx-zynqmp-common-v2023.1/u-boot.elf boot
+   ```
    
-5.  
+4. Build the Vitis platform:  
  - Open up the Vitis GUI:
    ```shell
    vitis
    ```
-   If the platform project doesn't show up in the **Explorer** window, go to **Vitis->XSCT Console** to open up
+   If the platform project doesn't show up in the **<em>Explorer</em>** window,
+   go to **<em>Vitis->XSCT Console</em>** to open up
    an xsct console and type the following command:
    ```tcl
    importprojects rfsoc_base_vitis_platform
    ```
-   The platform project created above should now show up in the **Explorer** window.
+   The platform project created above should now show up in the **<em>Explorer</em>** window.
     
