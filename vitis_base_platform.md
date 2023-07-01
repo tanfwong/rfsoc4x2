@@ -69,16 +69,27 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
    That's why I used `xsct` above. Also, the Vitis GUI doesn't allow specifying the two different .xsa files for
    hardware and hardware emulation.
 
-3. Generate the device tree:
+3. Generate the device tree blob:
  - Within the xsct terminal, continue
    ```tcl
    hsi open_hw_design rfsoc_base_hardware/rfsoc_base_hardware.xsa
    hsi set_repo_path ./device-tree-xlnx/
    hsi create_sw_design device-tree -os device_tree -proc psu_cortexa53_0
-   hsi set_property CONFIG.bootargs "console=ttyPS0,115200 root=/dev/mmcblk0p2 rw" [hsi::get_os]
+   hsi set_property CONFIG.dt_zocl true [hsi::get_os]
+   hsi set_property CONFIG.bootargs "console=ttyPS0,115200 clk_ignore_unused root=/dev/mmcblk0p2 rw" [hsi::get_os]
    hsi generate_target -dir ./rfsoc_base_vitis_platform/device_tree
    hsi close_hw_design [hsi current_hw_design]
+   exit
    ```
+ - Generate `system.dtb`:
+   ```shell
+   cd rfsoc_base_vitis_platform/device_tree
+   gcc -E -nostdinc -undef -D__DTS__ -x assembler-with-cpp -o system.dts system-top.dts
+   dtc -I dts -O dtb -o system.dtb system.dts
+   ```
+
+4. Copy `system.dtb` and boot files from common image:
+   
 5.  
  - Open up the Vitis GUI:
    ```shell
