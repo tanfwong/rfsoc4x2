@@ -124,5 +124,5 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
      - `FAT32 Partition Directory:` - Click `Browse` button to select `~/workspace/rfsoc_base_vitis_platform/fat32`
      - `Display Name:` - Change as wish
      - `Description:` - Chnage as wish
-     - **Leave `Linux Rootfs:` and `Sysroot Directory:` empty
+     - **Leave `Linux Rootfs:` and `Sysroot Directory:` empty**
     
