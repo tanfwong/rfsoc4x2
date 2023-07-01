@@ -125,4 +125,5 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
      - `Display Name:` - Change as wish
      - `Description:` - Chnage as wish
      - **Leave `Linux Rootfs:` and `Sysroot Directory:` empty**
+ - Build the platform by click the **hammer** button. After the build, built Vitis platform is in `~/workspace/rfsoc_base_vitis_platform/export/rfsoc_base_vitis_platform`. 
     
