@@ -61,7 +61,6 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
        -out .
    domain create -name xrt -proc psu_cortexa53 -os linux \
        -arch {64-bit} -runtime {ocl}  -bootmode {sd}
-   domain config -generate-bif
    platform write
    platform generate
    ```
@@ -116,4 +115,14 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
    importprojects rfsoc_base_vitis_platform
    ```
    The platform project created above should now show up in the **<em>Explorer</em>** window.
+ - Set the platform parameters:
+   - Open `platform.spr` in the **<em>Explorer</em>** window (**<em>right-click->Open</em>**)
+   - Select `xrt` in the opened tab in the main window
+   - Under `Domain:xrt` field:
+     - `Bif File:` - Click downarrow in `Browse` button to select `Generate Bif`
+     - `Boot Components Directory:` - Click `Browse` button to select `~/workspace/rfsoc_base_vitis_platform/boot`
+     - `FAT32 Partition Directory:` - Click `Browse` button to select `~/workspace/rfsoc_base_vitis_platform/fat32`
+     - `Display Name:` - Change as wish
+     - `Description:` - Chnage as wish
+     - **Leave `Linux Rootfs:` and `Sysroot Directory:` empty
     
