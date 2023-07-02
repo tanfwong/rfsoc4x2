@@ -44,6 +44,15 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
 - `rfsoc_base_hardware.xsa` for hardware
 - `rfsoc_base_hardware_emu.xsa` for hardware emulation
 
+<details>
+<summary>
+   $\large \color{red}\text{Be careful!}$
+</summary>
+Make sure that there aren't any checkpoints generated when completing the block design.
+That is, there should only be the folder `sources_1` in `~/workspace/rfsoc_base_hardware/rfsoc_base_hardware.srcs`.
+Otherwise, when exporting the .xsa files, it seems that Vivado will add the checkpoints to the `rebuild.tcl` script, causing errors when Vitis uses `v++` to synthesize the platform in Step 3 below. It took me a while to figure this out.   
+</details>
+
 ## Step 2: Create a Vitis Platform 
 1. Create a Vitis Platform project:
  - Start `xsct`:
@@ -126,7 +135,7 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
      - `Display Name:` Change as wish.
      - `Description:` Change as wish.
      - **Leave `Linux Rootfs:` and `Sysroot Directory:` empty**.
- - Build the platform by click the **hammer** button.
+ - Build the platform by click the :hammer: button.
    After the build, built Vitis platform is in `~/workspace/rfsoc_base_vitis_platform/export/rfsoc_base_vitis_platform`.
    The **<em>Explorer</em>** window in the figure below shows all the files generated in the `export` directory:
    ![export](Figures/vitis_base_platform_fig1.png)
