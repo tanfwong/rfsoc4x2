@@ -49,8 +49,8 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
    $\large \color{red}\text{Be careful!}$
 </summary>
 Make sure that there aren't any checkpoints generated when completing the block design.
-That is, there should only be the folder `sources_1` in `~/workspace/rfsoc_base_hardware/rfsoc_base_hardware.srcs`.
-Otherwise, when exporting the .xsa files, it seems that Vivado will add the checkpoints to the `rebuild.tcl` script, causing errors when Vitis uses `v++` to synthesize the platform in Step 3 below. It took me a while to figure this out.   
+That is, there should only be the folder <code>sources_1</code> in <code>~/workspace/rfsoc_base_hardware/rfsoc_base_hardware.srcs</code>.
+Otherwise, when exporting the <code>.xsa</code> files, Vivado will add the checkpoints to the <code>rebuild.tcl</code> script, causing errors when Vitis uses <code>v++</code> to synthesize the platform in Step 3 below. It took me a while to figure this out.   
 </details>
 
 ## Step 2: Create a Vitis Platform 
