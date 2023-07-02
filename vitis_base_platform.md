@@ -46,7 +46,7 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
 
 <details>
 <summary>
-   $\large \color{red}\text{Be careful!}$
+   $\large \color{red}\text{Beware!}$
 </summary>
 Make sure that there aren't any checkpoints generated when completing the block design.
 That is, there should only be the folder <code>sources_1</code> in <code>~/workspace/rfsoc_base_hardware/rfsoc_base_hardware.srcs</code>.
