@@ -7,7 +7,7 @@ to the RFSoC4x2 board.
 ## Step 0: Install the RFSoC4x2 board files and Xilinx's repos
 1. Get the board files from the [RealDigital repo](https://github.com/RealDigitalOrg/RFSoC4x2-BSP)
    ```shell
-   git clone https://github.com/RealDigitalOrg/RFSoC4x2-BSP.git ~/workspace/
+   git clone https://github.com/RealDigitalOrg/RFSoC4x2-BSP.git ~/workspace/RFSoC4x2-BSP
    ```
     The board files are in  `~/workspace/RFSoC4x2-BSP/board_files/rfsoc4x2`.
   
@@ -19,8 +19,8 @@ to the RFSoC4x2 board.
 
 3. Get Xilinx's device tree repo:
    ```shell
-   git clone https://github.com/Xilinx/device-tree-xlnx ~/workspace/
-   cd device-tree-xlnx
+   git clone https://github.com/Xilinx/device-tree-xlnx ~/workspace/device-tree-xlnx
+   cd ~/workspace/device-tree-xlnx
    git checkout xlnx_rel_v2023.1
    ```
 
