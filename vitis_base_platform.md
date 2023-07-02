@@ -109,11 +109,12 @@ I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated 
    vitis
    ```
    If the platform project doesn't show up in the **<em>Explorer</em>** window,
-   go to **<em>Vitis->XSCT Console</em>** to open up
+   either go to **<em>Vitis->XSCT Console</em>** to open up
    an xsct console and type the following command:
    ```tcl
    importprojects rfsoc_base_vitis_platform
    ```
+   or go to **<em>File->Import...</em>** to import the platform project.
    The platform project created above should now show up in the **<em>Explorer</em>** window.
  - Set the platform parameters:
    - Open `platform.spr` in the **<em>Explorer</em>** window (**<em>right-click->Open</em>**)
