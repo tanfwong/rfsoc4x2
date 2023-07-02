@@ -12,7 +12,7 @@ to the RFSoC4x2 board.
     The board files are in  `~/workspace/RFSoC4x2-BSP/board_files/rfsoc4x2`.
   
 2. Add the board files to Vivado:
-   Add the following line to Vivado startup script `~/.Xilinx/Vivado/Vivado_int.tcl` (if the file doesn't exist, add it):
+   Add the following line to Vivado startup script `~/.Xilinx/Vivado/Vivado_init.tcl` (if the file doesn't exist, add it):
    ```tcl
    set_param board.repoPaths [list "<full path to home directory>/workspace/RFSoC4x2-BSP"]
    ```
