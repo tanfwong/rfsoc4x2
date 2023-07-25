@@ -4,7 +4,7 @@ for
 ZCU104](https://github.com/Xilinx/Vitis-Tutorials/tree/2023.1/Vitis_Platform_Creation/Design_Tutorials/02-Edge-AI-ZCU104)
 to the RFSoC4x2 board. 
 
-## [Step 0: Install the RFSoC4x2 board files and Xilinx's repos](#Step0)
+## Step 0: Install the RFSoC4x2 board files and Xilinx's repos
 1. Get the board files from the [RealDigital repo](https://github.com/RealDigitalOrg/RFSoC4x2-BSP)
    ```shell
    git clone https://github.com/RealDigitalOrg/RFSoC4x2-BSP.git ~/workspace/RFSoC4x2-BSP
@@ -35,7 +35,7 @@ to the RFSoC4x2 board.
    ./sdk.sh -d .
    ```
 
-## [Step 1: Create a Vivado Hardware Design](#Step1)
+## Step 1: Create a Vivado Hardware Design
 Follow the steps in [Vitis Platform Creation Tutorial
 for
 ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platform_Creation/Design_Tutorials/02-Edge-AI-ZCU104/step1.md) to generate the hardware `.xsa` files by selecting the RFSoC4x2 board instead when creating the Vivado project. 
@@ -53,7 +53,7 @@ That is, there should only be the folder <code>sources_1</code> in <code>~/works
 Otherwise, when exporting the <code>.xsa</code> files, Vivado will add the checkpoints to the <code>rebuild.tcl</code> script, causing errors when Vitis uses <code>v++</code> to synthesize the platform in Step 3 below. It took me a while to figure this out.   
 </details>
 
-## [Step 2: Create a Vitis Platform](#Step2)
+## Step 2: Create a Vitis Platform
 1. Create a Vitis Platform project:
  - Start `xsct`:
    ```shell
@@ -152,7 +152,7 @@ Otherwise, when exporting the <code>.xsa</code> files, Vivado will add the check
      [pmufw_image] <rfsoc_base_vitis_platform/boot/pmufw.elf>
      ```
 
-## [Step 3: Test the Vitis Platform](#Step3)
+## [Step 3: Test the Vitis Platform](#Step-3:-Test-the-Vitis-Platform)
 1. Create a new **Vector Addition** application from template:
  - Go to **<em>File->New->Application Project...</em>** to create a new application project.
  - The `rfsoc_base_vitis_platform` created in Step 2 should show up (if it doesn't, you can press the **+** button to add it).
