@@ -1,39 +1,9 @@
-# Port <em>Vitis Platform Creation Tutorial for ZCU104</em> to RFSoC4x2
-My first experiment is to port the [Vitis Platform Creation Tutorial
-for
-ZCU104](https://github.com/Xilinx/Vitis-Tutorials/tree/2023.1/Vitis_Platform_Creation/Design_Tutorials/02-Edge-AI-ZCU104)
-to the RFSoC4x2 board. 
+# A Vitis Extensible Platform with a single ADC for RFSoC4x2 
+This is my second experiment usying the RFSoC4x2 board. The goal is to build a simple Vitis extensible platform that supports pulling samples from one ADC on the ZU48DR device on board.
 
-## Step 0: Install the RFSoC4x2 board files and Xilinx's repos
-1. Get the board files from the [RealDigital repo](https://github.com/RealDigitalOrg/RFSoC4x2-BSP)
-   ```shell
-   git clone https://github.com/RealDigitalOrg/RFSoC4x2-BSP.git ~/workspace/RFSoC4x2-BSP
-   ```
-    The board files are in  `~/workspace/RFSoC4x2-BSP/board_files/rfsoc4x2`.
-  
-2. Add the board files to Vivado:
-   Add the following line to Vivado startup script `~/.Xilinx/Vivado/Vivado_init.tcl` (if the file doesn't exist, add it):
-   ```tcl
-   set_param board.repoPaths [list "<full path to home directory>/workspace/RFSoC4x2-BSP"]
-   ```
-
-3. Get Xilinx's device tree repo:
-   ```shell
-   git clone https://github.com/Xilinx/device-tree-xlnx ~/workspace/device-tree-xlnx
-   cd ~/workspace/device-tree-xlnx
-   git checkout xlnx_rel_v2023.1
-   ```
-
-4. Download and install the ZYNQMP common image from [Xilinx's download page](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-platforms.html). Untar it to a directory of choice:
-   ```shell
-   tar xzf xilinx-zynqmp-common-v2023.1.tar.gz -C ~/workspace/
-   ```
-
-5. Install the `sysroot`:
-   ```shell
-   cd ~/workspace/xilinx-zynqmp-common-v2023.1
-   ./sdk.sh -d .
-   ```
+## Step 0: Install the RFSoC4x2 board files
+1. Follow Steps 0.1 and 0.2 in the [previous experiment](./vitis_base_plaform.md) to install the RFSoC board files.
+2. There is no need to install the Xilinx's device tree repo and the ZYNQMP common image here. We will use [Petalinux](https://www.xilinx.com/products/design-tools/embedded-software/petalinux-sdk.html#tools) to generate a new image and a device tree. 
 
 ## Step 1: Create a Vivado Hardware Design
 Follow the steps in [Vitis Platform Creation Tutorial
