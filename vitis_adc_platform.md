@@ -2,25 +2,16 @@
 This is my second experiment usying the RFSoC4x2 board. The goal is to build a simple Vitis extensible platform that supports pulling samples from one ADC on the ZU48DR device on board.
 
 ## Step 0: Install the RFSoC4x2 board files
-Follow [Steps 0.1 and 0.2 in the previous experiment](./vitis_base_platform.md#step-0-install-the-rfsoc4x2-board-files-and-xilinxs-repos) to install the RFSoC board files. There is no need to install the Xilinx's device tree repo and the ZYNQMP common image here. We will use [Petalinux](https://www.xilinx.com/products/design-tools/embedded-software/petalinux-sdk.html#tools) to generate a new image and a device tree. 
+If not already installed, follow [Steps 0.1 and 0.2 in the previous experiment](./vitis_base_platform.md#step-0-install-the-rfsoc4x2-board-files-and-xilinxs-repos) to install the RFSoC board files. There is no need to install the Xilinx's device tree repo and the ZYNQMP common image here. We will use [Petalinux](https://www.xilinx.com/products/design-tools/embedded-software/petalinux-sdk.html#tools) to generate a new image and a device tree. 
 
 ## Step 1: Create a Vivado Hardware Design
-Follow the steps in [Vitis Platform Creation Tutorial
+1. Source the TCL file in the Vivado TCL console to generate the following block design:
+![hardware design](Figures/block_design_adc_platform.png)
+to add the [RF Data Converter](https://www.xilinx.com/products/intellectual-property/rf-data-converter.html#overview) IP to a slightly modified version of the hardware design in [Vitis Platform Creation Tutorial
 for
-ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platform_Creation/Design_Tutorials/02-Edge-AI-ZCU104/step1.md) to generate the hardware `.xsa` files by selecting the RFSoC4x2 board instead when creating the Vivado project. 
+ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platform_Creation/Design_Tutorials/02-Edge-AI-ZCU104/step1.md).
 
-I named the Vivado project `rfsoc_base_hardware` in `~/workspace` and generated the files:
-- `rfsoc_base_hardware.xsa` for hardware
-- `rfsoc_base_hardware_emu.xsa` for hardware emulation
-
-<details>
-<summary>
-   $\large \color{red}\text{Beware!}$
-</summary>
-Make sure that there aren't any checkpoints generated when completing the block design.
-That is, there should only be the folder <code>sources_1</code> in <code>~/workspace/rfsoc_base_hardware/rfsoc_base_hardware.srcs</code>.
-Otherwise, when exporting the <code>.xsa</code> files, Vivado will add the checkpoints to the <code>rebuild.tcl</code> script, causing errors when Vitis uses <code>v++</code> to synthesize the platform in Step 3 below. It took me a while to figure this out.   
-</details>
+2. Generate `rfsoc_adc_hardware.xsa` for both hardware and hardware emulation. The Vivado project is named `rfsoc_adc_hardware`.
 
 ## Step 2: Create a Vitis Platform 
 1. Create a Vitis Platform project:
