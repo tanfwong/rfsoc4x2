@@ -152,7 +152,7 @@ Otherwise, when exporting the <code>.xsa</code> files, Vivado will add the check
      [pmufw_image] <rfsoc_base_vitis_platform/boot/pmufw.elf>
      ```
 
-## [Step 3: Test the Vitis Platform](#Step-3:-Test-the-Vitis-Platform)
+## Step 3: Test the Vitis Platform
 1. Create a new **Vector Addition** application from template:
  - Go to **<em>File->New->Application Project...</em>** to create a new application project.
  - The `rfsoc_base_vitis_platform` created in Step 2 should show up (if it doesn't, you can press the **+** button to add it).
