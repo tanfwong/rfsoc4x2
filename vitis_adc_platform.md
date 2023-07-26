@@ -5,13 +5,21 @@ This is my second experiment usying the RFSoC4x2 board. The goal is to build a s
 If not already installed, follow [Steps 0.1 and 0.2 in the previous experiment](./vitis_base_platform.md#step-0-install-the-rfsoc4x2-board-files-and-xilinxs-repos) to install the RFSoC board files. There is no need to install the Xilinx's device tree repo and the ZYNQMP common image here. We will use [Petalinux](https://www.xilinx.com/products/design-tools/embedded-software/petalinux-sdk.html#tools) to generate a new image and a device tree. 
 
 ## Step 1: Create a Vivado Hardware Design
-1. Source the TCL file in the Vivado TCL console to generate the following block design:
-![hardware design](Figures/block_design_adc_platform.png)
-to add the [RF Data Converter](https://www.xilinx.com/products/intellectual-property/rf-data-converter.html#overview) IP to a slightly modified version of the hardware design in [Vitis Platform Creation Tutorial
-for
+1. Download the TCL script [rfsoc_adc_hardware.tcl](src/vitis_adc_platform/rfsoc_adc_hardware.tcl) to `~/workspace`.
+2. Open Vivado and source the TCL script a TCL console, or simply do
+   ```bash
+   vivado -source rfsoc_adc_hardware.tcl
+   ```
+   to generate the following block design:
+   ![hardware design](Figures/block_design_adc_platform.png)
+   which adds an [RF Data Converter](https://www.xilinx.com/products/intellectual-property/rf-data-converter.html#overview) IP to a slightly modified version of the hardware design in [Vitis Platform Creation Tutorial for
 ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platform_Creation/Design_Tutorials/02-Edge-AI-ZCU104/step1.md).
+   - The Vivado project is named `rfsoc_adc_hardware`.
+   - ADC-D (ADC0 on tile 224) on the RFSoC4x2 board is enabled with sampling rate set to 2.4576 GSps.
 
-2. Generate `rfsoc_adc_hardware.xsa` for both hardware and hardware emulation. The Vivado project is named `rfsoc_adc_hardware`.
+3. Export the platform `rfsoc_adc_hardware.xsa` for both hardware and hardware emulation. 
+
+## Step 2: Use Petalinux to create boot files, device tree file, linux image, rootfs, and sysroot
 
 ## Step 2: Create a Vitis Platform 
 1. Create a Vitis Platform project:
