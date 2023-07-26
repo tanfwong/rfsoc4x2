@@ -6,7 +6,7 @@ If not already installed, follow [Steps 0.1 and 0.2 in the previous experiment](
 
 ## Step 1: Create a Vivado Hardware Design
 1. Download the TCL script [rfsoc_adc_hardware.tcl](src/vitis_adc_platform/rfsoc_adc_hardware.tcl) to `~/workspace`.
-2. Open Vivado and source the TCL script a TCL console, or simply do
+2. Open Vivado and source the TCL script a TCL shell, or simply do
    ```bash
    vivado -source rfsoc_adc_hardware.tcl
    ```
