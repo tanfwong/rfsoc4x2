@@ -37,11 +37,12 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
      ```
      CONFIG_rfdc
      ```
-     to allow including the `rfdc` libarary (we don't use it in this experiment though)
+     to allow including the `rfdc` library (we don't use it in this experiment though)
    - Run
      ```shell
      petalinux-config -c rootfs
      ```
+   - Select **<em>user packages->rfdc</em>**  
    - Select `xrt`:
      - **<em>Petalinux Package Groups->packagegroup-petalinux-vitis-acceleration-essential->packagegroup-petalinux-vitis-acceleration-essential</em>**
      - **<em>Petalinux Package Groups->packagegroup-petalinux-vitis-acceleration-essential->packagegroup-petalinux-vitis-acceleration-essential-dev</em>**
@@ -51,11 +52,20 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
    - Select Python (to run some PYNQ scripts later):
      - **<em>Petalinux Package Groups->packagegroup-petalinux-python-modules->packagegroup-petalinux-python-modules</em>**
      - **<em>Petalinux Package Groups->packagegroup-petalinux-python-modules->packagegroup-petalinux-python-modules-dev</em>**
-   - Select **<em>user packages->rfdc</em>**
+   - Select `openssh` for convenience:
+     - **<em>Filesystem Packages->console->network->openssh->openssh, openssh-ssh, openssh-sshd, openssh-scp</em>**
    - Select **<em>Image Features->package-management</em>** and **<em>Image Features->debug-tweaks</em>**
    - Select any other packages as wish
    - Exit and save
-
+4. Configure the Linux kernel:
+   ```shell
+   petalinux-config -c kernel
+   ```
+   - Allow user-mode SPI device driver support:
+     - Select **<em>Device Drivers->SPI support->User mode SPI device driver support</em>** (select the * mark)
+   - Exit and save
+5. Add device tree descriptions to enable access to the reference clock chips (LMK and LMX) via SPI:
+6. 
 ## Step 2: Create a Vitis Platform 
 1. Create a Vitis Platform project:
  - Start `xsct`:
