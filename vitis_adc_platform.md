@@ -20,6 +20,16 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
 3. Export the platform `rfsoc_adc_hardware.xsa` for both hardware and hardware emulation. 
 
 ## Step 2: Use Petalinux to create boot files, device tree file, linux image, rootfs, and sysroot
+1. Create a Petalinux project: 
+   ```bash
+   petalinux-create -t project --template zynqMP -n rfsoc-linux
+   cd rfsoc-linux
+   ```
+2. Enter the hardware plotform `rfsoc_adc_hardware.xsa`:
+   ```bash
+   petalinux-config --get-hw-description=../rfsoc_adc_hardware/rfsoc_adc_hardware.xsa
+   ```
+       
 
 ## Step 2: Create a Vitis Platform 
 1. Create a Vitis Platform project:
