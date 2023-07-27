@@ -21,15 +21,40 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
 
 ## Step 2: Use Petalinux to create boot files, device tree file, linux image, rootfs, and sysroot
 1. Create a Petalinux project: 
-   ```bash
+   ```shell
+   cd ~/workspace
    petalinux-create -t project --template zynqMP -n rfsoc-linux
    cd rfsoc-linux
    ```
-2. Enter the hardware plotform `rfsoc_adc_hardware.xsa`:
-   ```bash
+2. Enter the hardware plotform `rfsoc_adc_hardware.xsa` and select EXT4 for rootfs:
+   ```shell
    petalinux-config --get-hw-description=../rfsoc_adc_hardware/rfsoc_adc_hardware.xsa
    ```
-       
+   - Select **<em>Image Packaging Configuration->Root filesystem type->EXT4</em>**
+   - Exit and save configuration
+3. Add relevant libraries to rootfs:
+   - Add the following line to `~/workspace/rfsoc-linux/project-spec/meta-user/conf/user-rootfsconfig`:
+     ```
+     CONFIG_rfdc
+     ```
+     to allow including the `rfdc` libarary (we don't use it in this experiment though)
+   - Run
+     ```shell
+     petalinux-config -c rootfs
+     ```
+   - Select `xrt`:
+     - **<em>Petalinux Package Groups->packagegroup-petalinux-vitis-acceleration-essential->packagegroup-petalinux-vitis-acceleration-essential</em>**
+     - **<em>Petalinux Package Groups->packagegroup-petalinux-vitis-acceleration-essential->packagegroup-petalinux-vitis-acceleration-essential-dev</em>**
+   - Select `libmetal` (mostly for `rfdc`):
+     - **<em>Petalinux Package Groups->packagegroup-petalinux-openamp->packagegroup-petalinux-openamp</em>**
+     - **<em>Petalinux Package Groups->packagegroup-petalinux-openamp->packagegroup-petalinux-openamp-dev</em>**
+   - Select Python (to run some PYNQ scripts later):
+     - **<em>Petalinux Package Groups->packagegroup-petalinux-python-modules->packagegroup-petalinux-python-modules</em>**
+     - **<em>Petalinux Package Groups->packagegroup-petalinux-python-modules->packagegroup-petalinux-python-modules-dev</em>**
+   - Select **<em>user packages->rfdc</em>**
+   - Select **<em>Image Features->package-management</em>** and **<em>Image Features->debug-tweaks</em>**
+   - Select any other packages as wish
+   - Exit and save
 
 ## Step 2: Create a Vitis Platform 
 1. Create a Vitis Platform project:
