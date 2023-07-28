@@ -197,16 +197,20 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
      sudo dd if=~/workspace/rfsoc-linux/images/linux/rootfs.ext4 of=/dev/sda2 bs=1M
      sudo resize2fs /dev/sda2
      ```
-2. Create a new Vitis application from template:
- - Go to **<em>File->New->Application Project...</em>** to create a new application project.
- - The `rfsoc_base_vitis_platform` created in Step 2 should show up (if it doesn't, you can press the **+** button to add it).
-   Select the platform to use.
- - Give the project a name, say `vadd`.
- - Under `Application settings` field:
-   - `Sysroot path:` Click the `Browse` button to select `~/workspace/xilinx-zynqmp-common-v2023.1/sysroots/cortexa72-cortexa53-xilinx-linux`.
-   - `Root FS:` Click the `Browse` button to select `~/workspace/xilinx-zynqmp-common-v2023.1/rootfs.ext4`.
-   - `Kernel Image:` Click the `Browse` button to select `~/workspace/xilinx-zynqmp-common-v2023.1/Image`.
- - Select the `Simple Vector Addition` template to finish up the application project creation step.
+2. Create a new Vitis application project from template:
+   - Add Vitis example templates:
+     - Go to **<em>Vitis->Examples...</em>** to install example templates
+     - Click the `Download` button to install the templates from the **<em>Vitis Accel Examples Repository</em>**
+     - Only need to do this once
+   - Go to **<em>File->New->Application Project...</em>** to create a new application project:
+     - Select the `rfsoc_adc_vitis_platform` created in Step 3. If the platform doesn't show up as a choice, you can press the **+** button to add it. Press the `Next>` button.
+     - Give the project a name, say `test_adc`. Press the `Next>` button.
+     - Under `Application settings` field:
+       - `Sysroot path:` Click the `Browse` button to select `~/workspace/rfsoc-linux/images/linux/sysroots/cortexa72-cortexa53-xilinx-linux`.
+       - `Root FS:` Click the `Browse` button to select `~/workspace/rfsoc-linux/images/linux/rootfs.ext4`.
+       - `Kernel Image:` Click the `Browse` button to select `~/workspace/rfsoc-linux/images/linux/Image`.
+       - Press the `Next>` button.
+   - Select the `Simple Vector Addition` template to finish up the application project creation step.
   
 2. Follow the steps in [Vitis Platform Creation Tutorial
 for
