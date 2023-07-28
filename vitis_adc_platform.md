@@ -159,8 +159,8 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
  - Set the platform parameters:
    - Open `platform.spr` in the **<em>Explorer</em>** window (**<em>right-click->Open</em>**)
    - Set the paths to `fsbl.elf` and `pmufw.elf`: 
-     - `fsbl.elf`: Click the `Browse` button to select `~/workspace/rfsoc-linux/images/linux/zynqmp_fsbl.elf`
-     - `pmufw.elf`: Click the `Browse` button to select `~/workspace/rfsoc-linux/images/linux/pmufw.elf`  
+     - `FSBL`: Click the `Browse` button to select `~/workspace/rfsoc-linux/images/linux/zynqmp_fsbl.elf`
+     - `PMU Firmware`: Click the `Browse` button to select `~/workspace/rfsoc-linux/images/linux/pmufw.elf`  
    - Select `xrt` in the opened tab in the main window
    - Under `Domain:xrt` field:
      - `Bif File:` Click downarrow in the `Browse` button to select `Generate Bif`.
@@ -172,7 +172,7 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
  - Build the platform by click the :hammer: button.
    After the build, the built Vitis platform is in `~/workspace/rfsoc_adc_vitis_platform/export/rfsoc_adc_vitis_platform`.
  - Fix the `linux.bif` file:
-   - Select and open the `linux.bif` file from the **<em>Explorer</em>**.
+   - Select and open the `~/workspace/rfsoc_adc_vitis_platform/export/rfsoc_adc_vitis_platform/sw/rfsoc_adc_vitis_platform/boot/linux.bif` file from the **<em>Explorer</em>**.
    - Change the two lines from:
      ```
      [bootloader] <fsbl.elf>
