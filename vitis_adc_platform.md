@@ -64,8 +64,46 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
    - Allow user-mode SPI device driver support:
      - Select **<em>Device Drivers->SPI support->User mode SPI device driver support</em>** (select the * mark)
    - Exit and save
-5. Add device tree descriptions to enable access to the reference clock chips (LMK and LMX) via SPI:
-6. 
+5. Add device tree descriptions to enable access to the reference clock chips (LMK04828 and LMX2594) via SPI:
+   - Add the following lines to `~/workspace/rfsoc-linux/project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi`:
+     ```
+     /include/ "system-conf.dtsi"
+     / {
+        chosen {
+                bootargs = " earlycon console=ttyPS0,115200 clk_ignore_unused root=/dev/mmcblk0p2 rw";
+                stdout-path = "serial0:115200n8";
+        };
+     };
+     &spi0 {
+        lmk@0 {
+                compatible = "ti,lmk04828";
+                reg = <0x0>;
+                spi-max-frequency = <500000>;
+                num_bytes = <3>;
+        };
+        lmxdac@1 {
+                compatible = "ti,lmx2594";
+                reg = <0x1>;
+                spi-max-frequency = <500000>;
+                num_bytes = <3>;
+        };
+        lmxadc@2 {
+                compatible = "ti,lmx2594";
+                reg = <0x2>;
+                spi-max-frequency = <500000>;
+                num_bytes = <3>;
+        };
+     };
+     ```
+6. Build the image and sysroot:
+   ```bash
+   petalinux-build
+   petalinux-build --sdk
+   cd images/linux
+   ./sdk.sh -d .
+   ```
+   - The boot files, device tree file, kernel image, and the EXT4 rootfs are generated in `~/workspace/rfsoc-linux/images/linux/`. The sysroot is in `~/workspace/rfsoc-linux/images/linux/sysroots/cortexa72-cortexa53-xilinx-linux`.
+     
 ## Step 2: Create a Vitis Platform 
 1. Create a Vitis Platform project:
  - Start `xsct`:
