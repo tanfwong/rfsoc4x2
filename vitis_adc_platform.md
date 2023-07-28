@@ -136,14 +136,14 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
    ```
  - Copy `system.dtb` and other boot files to the directories:
    ```shell
-   cp device_tree/system.dtb boot
-   cp device_tree/system.dtb fat32
-   cp ~/workspace/xilinx-zynqmp-common-v2023.1/boot.scr fat32
-   cp ~/workspace/xilinx-zynqmp-common-v2023.1/bl31.elf boot
-   cp ~/workspace/xilinx-zynqmp-common-v2023.1/u-boot.elf boot
+   cp ~//workspace/rfsoc-linux/images/linux/system.dtb boot
+   cp ~//workspace/rfsoc-linux/images/linux/system.dtb fat32
+   cp ~/workspace/rfsoc-linux/images/linux/boot.scr fat32
+   cp ~/workspace/rfsoc-linux/images/linux/bl31.elf boot
+   cp ~/workspace/rfsoc-linux/images/linux/u-boot.elf boot
    ```
    
-4. Build the Vitis platform:  
+3. Build the Vitis platform:  
  - Open up the Vitis GUI:
    ```shell
    vitis
@@ -152,24 +152,25 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
    either go to **<em>Vitis->XSCT Console</em>** to open up
    an xsct console and type the following command:
    ```tcl
-   importprojects rfsoc_base_vitis_platform
+   importprojects rfsoc_adc_vitis_platform
    ```
    or go to **<em>File->Import...</em>** to import the platform project.
    The platform project created above should now show up in the **<em>Explorer</em>** window.
  - Set the platform parameters:
    - Open `platform.spr` in the **<em>Explorer</em>** window (**<em>right-click->Open</em>**)
+   - Set the paths to `fsbl.elf` and `pmufw.elf`: 
+     - `fsbl.elf`: Click the `Browse` button to select `~/workspace/rfsoc-linux/images/linux/zynqmp_fsbl.elf`
+     - `pmufw.elf`: Click the `Browse` button to select `~/workspace/rfsoc-linux/images/linux/pmufw.elf`  
    - Select `xrt` in the opened tab in the main window
    - Under `Domain:xrt` field:
      - `Bif File:` Click downarrow in the `Browse` button to select `Generate Bif`.
-     - `Boot Components Directory:` Click the `Browse` button to select `~/workspace/rfsoc_base_vitis_platform/boot`.
-     - `FAT32 Partition Directory:` Click the `Browse` button to select `~/workspace/rfsoc_base_vitis_platform/fat32`.
+     - `Boot Components Directory:` Click the `Browse` button to select `~/workspace/rfsoc_adc_vitis_platform/boot`.
+     - `FAT32 Partition Directory:` Click the `Browse` button to select `~/workspace/rfsoc_adc_vitis_platform/fat32`.
      - `Display Name:` Change as wish.
      - `Description:` Change as wish.
      - **Leave `Linux Rootfs:` and `Sysroot Directory:` empty**.
  - Build the platform by click the :hammer: button.
-   After the build, the built Vitis platform is in `~/workspace/rfsoc_base_vitis_platform/export/rfsoc_base_vitis_platform`.
-   The **<em>Explorer</em>** window in the figure below shows all the files generated in the `export` directory:
-   ![export](Figures/vitis_base_platform_fig1.png)
+   After the build, the built Vitis platform is in `~/workspace/rfsoc_adc_vitis_platform/export/rfsoc_adc_vitis_platform`.
  - Fix the `linux.bif` file:
    - Select and open the `linux.bif` file from the **<em>Explorer</em>**.
    - Change the two lines from:
@@ -179,11 +180,11 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
      ```
      to
      ```
-     [bootloader] <rfsoc_base_vitis_platform/boot/fsbl.elf>
-     [pmufw_image] <rfsoc_base_vitis_platform/boot/pmufw.elf>
+     [bootloader] <rfsoc_adc_vitis_platform/boot/fsbl.elf>
+     [pmufw_image] <rfsoc_adc_vitis_platform/boot/pmufw.elf>
      ```
 
-## Step 3: Test the Vitis Platform
+## Step 4: Test the Vitis Platform
 1. Create a new **Vector Addition** application from template:
  - Go to **<em>File->New->Application Project...</em>** to create a new application project.
  - The `rfsoc_base_vitis_platform` created in Step 2 should show up (if it doesn't, you can press the **+** button to add it).
