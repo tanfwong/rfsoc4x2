@@ -185,7 +185,19 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
      ```
 
 ## Step 4: Test the Vitis Platform
-1. Create a new **Vector Addition** application from template:
+1. Prepare a bootable SD card:
+   - Insert the SD card into a card reader on a Linux machine. Check its device name:
+     ```shell
+     lsblk -r -O
+     ```
+     For example, my SD card is `/dev/sda`.
+   - Follow [these steps](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842385/How+to+format+SD+card+for+SD+boot) to create a boot partition (FAT32) and a root partition (EXT4) on `/dev/sda`.
+   - Write the rootfs to the root partition:
+     ```shell
+     sudo dd if=~/workspace/rfsoc-linux/images/linux/rootfs.ext4 of=/dev/sda2 bs=1M
+     sudo resize2fs /dev/sda2
+     ```
+2. Create a new Vitis application from template:
  - Go to **<em>File->New->Application Project...</em>** to create a new application project.
  - The `rfsoc_base_vitis_platform` created in Step 2 should show up (if it doesn't, you can press the **+** button to add it).
    Select the platform to use.
