@@ -221,7 +221,7 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
      - Add `--package.no_image` to the `Packaging options` field to turn off generating a disk image
      - Click the :hammer: button on the tool bar to build the project
 
-3. Prepare a bootable SD card:
+3. Boot up the RFSoC board from an SD card:
    - Insert the SD card into a card reader on a Linux machine. Check its device name:
      ```shell
      lsblk -r -O
@@ -239,3 +239,48 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
      mkdir mnt
      sudo mount -t vfat /dev/sda1/ mnt
      ```
+   - Copy boot files, bit file, and executable to the SD card:
+     ```shell
+     cp ~/workspace/test_adc_system/Hardware/package/sd_card/* mnt/
+     sudo umount mnt
+     ```
+   - Put the SD card into the microSD slot of the RFSoC4x2 board.
+     Use a USB cable to connect the Linux host to the JTAG/UART port on the RFSoC4x2 board.
+     Also connect the Ethernet port to a DHCP server if available.
+     On the host, run to connect to the UART port (install `picocom` if needed):
+     ```shell
+     sudo picocom -b 115200 /dev/ttyUSB1
+     ```
+     Boot up the RFSoC4x2 board.
+   - Log in as `root` (default password is `root`, remember to change it after logging in).
+     Do `ifconfig` to check the IP address. With the IP address, can also `ssh` in as `root`.
+     Petalinux also creates a sudoer with login `petalinux`, whose passwd is set by the user when logging in the first time.
+
+4. Configure and turn on the reference clock chips (LMK04828 and LMX2594) via SPI:
+   - `scp` this Python package file [`xrfclk-2.0.tar.gz`](src/vitis_adc_platform/xrfclk-2.0.tar.gz), which I hack out from the [RFSoC-PYNQ distribution](https://github.com/Xilinx/RFSoC-PYNQ/tree/master/boards/RFSoC4x2), to say `/home/root/` on the RFSoC board.
+   - Install the Python package on the board:
+     ```shell
+     python -m pip install /home/root/xrfclk-2.0.tar.gz
+     ```
+   - `scp` this python script [`set_up_ref_clks.py`](src/vitis_adc_platform/set_up_ref_clks.py) to say `/home/root/` and then run it:
+     ```shell
+     python /home/root/set_ref_clocks.py
+     ```
+     to turn on the reference clocks.
+5. Run the `test_adc` app to grab samples from the ADC:
+   ```shell
+   cd /run/media/boot-mmcblk0p1/
+   ./test_adc dummy_kernel.xclbin
+   ```
+   If the app runs properly, should see the following printout:
+   ```
+   Found Platform
+   Platform Name: Xilinx
+   INFO: Reading dummy_kernel.xclbin
+   Loading: 'dummy_kernel.xclbin'
+   Trying to program device[0]: edge
+   Device[0]: program successful!
+   Reading data from device
+   Writing data to wave.txt
+   ```
+   The samples are stored in the file `wave.txt`.
