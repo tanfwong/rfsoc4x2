@@ -157,7 +157,7 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
    or go to **<em>File->Import...</em>** to import the platform project.
    The platform project created above should now show up in the **<em>Explorer</em>** window.
  - Set the platform parameters:
-   - Open `platform.spr` in the **<em>Explorer</em>** window (**<em>right-click->Open</em>**)
+   - Open `platform.spr` from the **<em>Explorer</em>** window (**<em>right-click->Open</em>**)
    - Set the paths to `fsbl.elf` and `pmufw.elf`: 
      - `FSBL`: Click the `Browse` button to select `~/workspace/rfsoc-linux/images/linux/zynqmp_fsbl.elf`
      - `PMU Firmware`: Click the `Browse` button to select `~/workspace/rfsoc-linux/images/linux/pmufw.elf`  
@@ -172,7 +172,7 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
  - Build the platform by click the :hammer: button.
    After the build, the built Vitis platform is in `~/workspace/rfsoc_adc_vitis_platform/export/rfsoc_adc_vitis_platform`.
  - Fix the `linux.bif` file:
-   - Select and open the `~/workspace/rfsoc_adc_vitis_platform/export/rfsoc_adc_vitis_platform/sw/rfsoc_adc_vitis_platform/boot/linux.bif` file from the **<em>Explorer</em>**.
+   - Select and open the `rfsoc_adc_vitis_platform/export/rfsoc_adc_vitis_platform/sw/rfsoc_adc_vitis_platform/boot/linux.bif` file from the **<em>Explorer</em>**.
    - Change the two lines from:
      ```
      [bootloader] <fsbl.elf>
@@ -212,6 +212,18 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
        - Press the `Next>` button.
    - Select **<em>Acceleration templates with PL and AIE accelerators->Host Examples->Data Transfer (C)</em>** to finish up the application project creation step.
   
-3. Modify the kernel and host source codes:
+3. Modify the kernel and host source codes and build the project:
    - Under the **<em>Explorer</em>** window, replace the file `test_adc_kernels/src/dummy_kernel.cpp` in the template with this [`dummy_kernel.cpp`](src/vitis_adc_platform/dummy_kernel.cpp).
    - Replace the file `test_adc/src/host.cpp` file in the template with this [`host.cpp`](src/vitis_adc_platform/host.cpp).
+   - Specify `v++` linker connectivity:
+     - Open `test_adc_system_hw_link/test_adc_system_hw_link.prj` from the **<em>Explorer</em>**.
+     - Under **<em>Hardware Functions</em>**, right-click `dummy_kernel` and select **<em>Edit V++ Options...</em>**.
+     - Add the following lines to the `V++ configuration settings` field:
+       ```
+       [clock]
+       id=2:dummy_kernel_1
+
+       [connectivity]
+       stream_connect = RFDC_AXIS:dummy_kernel_1.s_in
+       ```
+       Click the `Appy and Close` button
