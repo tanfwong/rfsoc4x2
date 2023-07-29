@@ -1,4 +1,4 @@
-# Hacked out the from RFSoC-PYNQ distribution
+# Hacked out from the RFSoC-PYNQ distribution
 # Tan F. Wong 7/20/2023
 
 from xrfclk import set_ref_clks
