@@ -103,13 +103,13 @@ int main(int argc, char** argv) {
     // to always use enqueueTask() for invoking HLS kernel
     OCL_CHECK(err, err = q.enqueueTask(krnl));
 
-    std::cout << "Read data from device\n";
+    std::cout << "Reading data from device\n";
     // Copy Result from Device Global Memory to Host Local Memory
     OCL_CHECK(err, err = q.enqueueMigrateMemObjects({buffer}, CL_MIGRATE_MEM_OBJECT_HOST));
     q.finish();
     // OPENCL HOST CODE AREA END
 
-    std::cout << "Write data to wave.txt\n";
+    std::cout << "Writing data to wave.txt\n";
     FILE *fp;
     fp = fopen("wave.txt","w");
 
