@@ -257,7 +257,7 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
      Petalinux also creates a sudoer with login `petalinux`, whose passwd is set by the user when logging in the first time.
 
 4. Configure and turn on the reference clock chips (LMK04828 and LMX2594) via SPI:
-   - `scp` this Python package file [`xrfclk-2.0.tar.gz`](src/vitis_adc_platform/xrfclk-2.0.tar.gz), which I hack out from the [RFSoC-PYNQ distribution](https://github.com/Xilinx/RFSoC-PYNQ/tree/master/boards/RFSoC4x2), to say `/home/root/` on the RFSoC board.
+   - `scp` this python package file [`xrfclk-2.0.tar.gz`](src/vitis_adc_platform/xrfclk-2.0.tar.gz), which I hack out from the [RFSoC-PYNQ distribution](https://github.com/Xilinx/RFSoC-PYNQ/tree/master/boards/RFSoC4x2), to say `/home/root/` on the RFSoC board.
    - Install the Python package on the board:
      ```shell
      python -m pip install /home/root/xrfclk-2.0.tar.gz
