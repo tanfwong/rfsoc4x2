@@ -15,7 +15,7 @@
 */
 
 /* Slightly modified by Tan F. Wong to serve as a simple example kernel to
-* load streamed samples from the ADCC0 on ZU48DR to global memory.
+* load streamed samples from ADC0 on ZU48DR to global memory.
 * 7/20/2023
 */
 
