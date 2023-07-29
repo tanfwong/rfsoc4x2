@@ -262,7 +262,7 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
      ```shell
      python -m pip install /home/root/xrfclk-2.0.tar.gz
      ```
-   - `scp` this python script [`set_up_ref_clks.py`](src/vitis_adc_platform/set_up_ref_clks.py) to say `/home/root/` and then run it:
+   - `scp` this python script [`set_ref_clocks.py`](src/vitis_adc_platform/set_ref_clocks.py) to say `/home/root/` and then run it:
      ```shell
      python /home/root/set_ref_clocks.py
      ```
