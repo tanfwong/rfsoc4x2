@@ -286,3 +286,6 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
    Writing data to wave.txt
    ```
    The samples are stored in the file `wave.txt`.
+
+   Here is an example plot of the captured samples when a 2 MHz sinusoid is fed to the ADC-D SMA connector:
+   ![2 MHz sinusoid](Figures/sin2M.png) 
