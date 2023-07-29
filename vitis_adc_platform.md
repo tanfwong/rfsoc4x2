@@ -169,7 +169,7 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
      - `Display Name:` Change as wish.
      - `Description:` Change as wish.
      - **Leave `Linux Rootfs:` and `Sysroot Directory:` empty**.
- - Build the platform by click the :hammer: button.
+ - Build the platform by click the :hammer: button on the tool bar.
    After the build, the built Vitis platform is in `~/workspace/rfsoc_adc_vitis_platform/export/rfsoc_adc_vitis_platform`.
  - Fix the `linux.bif` file:
    - Select and open the `rfsoc_adc_vitis_platform/export/rfsoc_adc_vitis_platform/sw/rfsoc_adc_vitis_platform/boot/linux.bif` file from the **<em>Explorer</em>**.
@@ -185,19 +185,7 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
      ```
 
 ## Step 4: Test the Vitis Platform
-1. Prepare a bootable SD card:
-   - Insert the SD card into a card reader on a Linux machine. Check its device name:
-     ```shell
-     lsblk -r -O
-     ```
-     For example, my SD card is `/dev/sda`.
-   - Follow [these steps](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842385/How+to+format+SD+card+for+SD+boot) to create a boot partition (FAT32) and a root partition (EXT4) on `/dev/sda`.
-   - Write the rootfs to the root partition:
-     ```shell
-     sudo dd if=~/workspace/rfsoc-linux/images/linux/rootfs.ext4 of=/dev/sda2 bs=1M
-     sudo resize2fs /dev/sda2
-     ```
-2. Create a new Vitis application project from template:
+1. Create a new Vitis application project from template:
    - Add Vitis example templates:
      - Go to **<em>Vitis->Examples...</em>** to install example templates
      - Click the `Download` button to install the templates from the **<em>Vitis Accel Examples Repository</em>**
@@ -212,12 +200,12 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
        - Press the `Next>` button.
    - Select **<em>Acceleration templates with PL and AIE accelerators->Host Examples->Data Transfer (C)</em>** to finish up the application project creation step.
   
-3. Modify the kernel and host source codes and build the project:
+2. Modify the kernel and host source codes and build the project:
    - Under the **<em>Explorer</em>** window, replace the file `test_adc_kernels/src/dummy_kernel.cpp` in the template with this [`dummy_kernel.cpp`](src/vitis_adc_platform/dummy_kernel.cpp).
    - Replace the file `test_adc/src/host.cpp` file in the template with this [`host.cpp`](src/vitis_adc_platform/host.cpp).
    - Specify `v++` linker connectivity:
-     - Open `test_adc_system_hw_link/test_adc_system_hw_link.prj` from the **<em>Explorer</em>**.
-     - Under **<em>Hardware Functions</em>**, right-click `dummy_kernel` and select **<em>Edit V++ Options...</em>**.
+     - Open `test_adc_system_hw_link/test_adc_system_hw_link.prj` from the **<em>Explorer</em>**
+     - Under **<em>Hardware Functions</em>**, right-click `dummy_kernel` and select **<em>Edit V++ Options...</em>**
      - Add the following lines to the `V++ configuration settings` field:
        ```
        [clock]
@@ -227,3 +215,27 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
        stream_connect = RFDC_AXIS:dummy_kernel_1.s_in
        ```
        Click the `Appy and Close` button
+   - Build:
+     - Open `test_adc_system.sprj` from the **<em>Explorer</em>**
+     - Select **<em>Hardware</em>** for **<em>Active build configuration</em>** (located at upper right hand corner)
+     - Add `--package.no_image` to the `Packaging options` field to turn off generating a disk image
+     - Click the :hammer: button on the tool bar to build the project
+
+3. Prepare a bootable SD card:
+   - Insert the SD card into a card reader on a Linux machine. Check its device name:
+     ```shell
+     lsblk -r -O
+     ```
+     For example, my SD card is `/dev/sda`.
+   - Follow [these steps](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842385/How+to+format+SD+card+for+SD+boot) to create a boot partition (FAT32) and a root partition (EXT4) on `/dev/sda`.
+   - Write the rootfs to the root (EXT4) partition:
+     ```shell
+     sudo dd if=~/workspace/rfsoc-linux/images/linux/rootfs.ext4 of=/dev/sda2 bs=1M
+     sudo resize2fs /dev/sda2
+     ```
+   - Mount the boot (FAT32) partition:
+     ```shell
+     cd ~/workspace
+     mkdir mnt
+     sudo mount -t vfat /dev/sda1/ mnt
+     ```
