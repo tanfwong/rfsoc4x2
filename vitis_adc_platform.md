@@ -1,5 +1,5 @@
 # A Vitis Extensible Platform with a single ADC for RFSoC4x2 
-This is my second experiment usying the RFSoC4x2 board. The goal is to build a simple Vitis extensible platform that supports pulling samples from one ADC on the ZU48DR device on board.
+This is my second experiment with the RFSoC4x2 board. The goal is to build a simple Vitis extensible platform that supports pulling samples from one ADC of the ZU48DR device on board.
 
 ## Step 0: Install the RFSoC4x2 board files
 If not already installed, follow [Steps 0.1 and 0.2 in the previous experiment](./vitis_base_platform.md#step-0-install-the-rfsoc4x2-board-files-and-xilinxs-repos) to install the RFSoC board files. There is no need to install the Xilinx's device tree repo and the ZYNQMP common image here. We will use [Petalinux](https://www.xilinx.com/products/design-tools/embedded-software/petalinux-sdk.html#tools) to generate a new image and a device tree. 
