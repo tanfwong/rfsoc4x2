@@ -1,3 +1,24 @@
+/**
+* Copyright (C) 2019-2021 Xilinx, Inc
+*
+* Licensed under the Apache License, Version 2.0 (the "License"). You may
+* not use this file except in compliance with the License. A copy of the
+* License is located at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+* WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+* License for the specific language governing permissions and limitations
+* under the License.
+*/
+
+/* Modified by Tan F. Wong to serve as a simple example host code
+* to load streamed samples from ADC0 on ZU48DR.
+* 7/20/2023
+*/
+
 #include "xcl2.hpp"
 #include "ap_int.h"
 #include <algorithm>
@@ -33,7 +54,7 @@ int main(int argc, char** argv) {
     // CL_MEM_USE_HOST_PTR
     std::vector<data_t, aligned_allocator<data_t> > source_hw_data(DATA_SIZE);
     for (int i = 0; i < DATA_SIZE; i++) {
-        source_hw_data[i] = 99;
+        source_hw_data[i] = 99; // Initialize with arbitary content
     }
 
     // OPENCL HOST CODE AREA START
@@ -102,5 +123,4 @@ int main(int argc, char** argv) {
         }
     }
     fclose(fp);
-
 }                                                                                                   103,9         Bo
