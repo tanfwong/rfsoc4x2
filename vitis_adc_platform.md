@@ -136,8 +136,8 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
    ```
  - Copy `system.dtb` and other boot files to the directories:
    ```shell
-   cp ~//workspace/rfsoc-linux/images/linux/system.dtb boot
-   cp ~//workspace/rfsoc-linux/images/linux/system.dtb fat32
+   cp ~/workspace/rfsoc-linux/images/linux/system.dtb boot
+   cp ~/workspace/rfsoc-linux/images/linux/system.dtb fat32
    cp ~/workspace/rfsoc-linux/images/linux/boot.scr fat32
    cp ~/workspace/rfsoc-linux/images/linux/bl31.elf boot
    cp ~/workspace/rfsoc-linux/images/linux/u-boot.elf boot
