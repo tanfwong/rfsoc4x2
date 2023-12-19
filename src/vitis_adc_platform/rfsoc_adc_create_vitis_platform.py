@@ -25,4 +25,13 @@ platform = client.create_platform_component(name=platform_name, desc=platform_de
                                             fsbl_path=platform_fsbl, pmufw_Elf=platform_pmu,\
                                             os='linux', domain_name=platform_domain)
 
+# Add info to domain
+boot_dir = workspace+'/'+platform_name+'/boot'
+sd_dir = workspacce+'/rfsoc-linux/images/linux/'
+
+domain = platform.get_domain(platform_domain)
+domain.add_boot_dir(boot_dir)
+domain.set_sd_dir(sd_dir)
+domain.generate_bif()
+
 
