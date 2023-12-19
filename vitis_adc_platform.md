@@ -1,4 +1,4 @@
-# A Vitis Extensible Platform with a single ADC for RFSoC4x2 
+# A Vitis Extensible Platform with a single ADC for RFSoC4x2 (for Vitis 2023.1 Classic IDE)
 This is my second experiment with the RFSoC4x2 board. The goal is to build a simple Vitis extensible platform that supports pulling samples from one ADC of the ZU48DR device on board.
 
 ## Step 0: Install the RFSoC4x2 board files
