@@ -27,6 +27,7 @@ platform = client.create_platform_component(name=platform_name, desc=platform_de
 
 # Add info to domain
 boot_dir = workspace+'/'+platform_name+'/boot'
+os.mkdir(boot_dir)
 sd_dir = workspacce+'/rfsoc-linux/images/linux/'
 
 domain = platform.get_domain(platform_domain)
