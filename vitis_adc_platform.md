@@ -1,5 +1,5 @@
 # A Vitis Extensible Platform with a single ADC for RFSoC4x2 (Vitis 2023.2 Unified IDE)
-This is attempt to migrate [A Vitis Extensible Platform with a single ADC for RFSoC4x2](./vitis_adc_platform_classicIDE.md) to the Vitis 2023.2 Unified IDE. Steps 0 to 2 are eactly the same as those before.
+This is attempt to migrate [A Vitis Extensible Platform with a single ADC for RFSoC4x2](./vitis_adc_platform_classicIDE.md) to the Vitis 2023.2 Unified IDE. Steps 0 to 2 are exactly the same as those before.
 
 
 ## Step 0: Install the RFSoC4x2 board files
@@ -108,6 +108,26 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
      
 ## Step 3: Create a Vitis Platform 
 1. Create a Vitis Platform project:
+ - Run the following python script:
+   ```python
+   import vitis
+   import os
+
+   # Create a client object
+   client = vitis.create_client()
+
+   # Set workspace 
+   workspace = os.path.expanduser('~')+'/workspace'
+   client.set_workspace(workspace)
+
+   # Create platform
+
+   
+
+   
+   
+   
+   ```
  - Start `xsct`:
    ```shell
    cd ~/workspace
