@@ -10,5 +10,6 @@ it.
 
 As I'm learning how to use the RFSoC4x2 board, I want to use this
 repository to jot down my notes on experimenting with the board:
-1. [Port <em>Vitis Platform Creation Tutorial for ZCU104</em> to RFSoC4x2](vitis_base_platform.md)
+1. [Port <em>Vitis Platform Creation Tutorial for ZCU104</em> to RFSoC4x2 (Vitis 2023.1 classic IDE)](vitis_base_platform.md)
 2. [A Vitis Extensible Platform with a single ADC for RFSoC4x2 (Vitis 2023.1 classic IDE)](vitis_adc_platform_classicIDE.md)
+3. [A Vitis Extensible Platform with a single ADC for RFSoC4x2 (Vitis 2023.2 unified IDE)](vitis_adc_platform.md)
