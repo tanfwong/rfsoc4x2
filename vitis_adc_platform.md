@@ -136,7 +136,7 @@ to create and build the platform component `rfsoc_adc_vitis_platform` in `~/work
   
 2. Modify the kernel and host source codes and build the project:
    - Under the WORKSPACE view, replace the template file `dummy_kernel.cpp` in **test_adc_dummy_kernel [HLS]->Sources** with this [`dummy_kernel.cpp`](src/vitis_adc_platform/dummy_kernel.cpp).
-   - Replace the file `test_adc/src/host.cpp` file in the template with this [`host.cpp`](src/vitis_adc_platform/host.cpp).
+   - Replace the template file `host.cpp` in **test_adc_host [Application]->Sources->src**the template with this [`host.cpp`](src/vitis_adc_platform/host.cpp).
    - Specify `v++` linker connectivity:
      - Open `test_adc_system_hw_link/test_adc_system_hw_link.prj` from the **<em>Explorer</em>**
      - Under **<em>Hardware Functions</em>**, right-click `dummy_kernel` and select **<em>Edit V++ Options...</em>**
