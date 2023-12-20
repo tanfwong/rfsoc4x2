@@ -114,7 +114,7 @@ vitis -s create_rfsoc_adc_vitis_platform.py
 to create and build the platform component `rfsoc_adc_vitis_platform` in `~/workspace`. You can also run the python script line by line in the Vitis interactive mode (`vitis -i`).
  
 ## Step 4: Test the Vitis Platform
-1. Create a new Vitis system/application project from template:
+1. Create a new Vitis system project from template:
    - Add Vitis example templates:
      - Go to **<em>View->Examples...</em>** or click the `Examples` button on the left widown edge to open the EXAMPLES view
      - Click the `Download` (a downarrow pointing to a bar) button to install the templates from the **<em>Vitis Accel Examples Repository</em>**
@@ -129,13 +129,13 @@ to create and build the platform component `rfsoc_adc_vitis_platform` in `~/work
        - `Sysroot`: Click the `Browse` button to select `~/workspace/rfsoc-linux/images/linux/sysroots/cortexa72-cortexa53-xilinx-linux`.
        - Check the `Update Workspace Perference` box so that  don't need to enter the info again.
        - Press the `Next` and the `Finish` buttons to generate the project.
-   - You show see the following three components added to the `WORKSPACE` view:
-     - `test_adc [rfsoc_adc_vitis_platform]`: system project
-     - `test_adc_dummy_kernel [HLS]`: HLS component
-     - `test_adc_host [Application]: Application component    
+   - You show see the following three components added to the WORKSPACE view:
+     - **test_adc [rfsoc_adc_vitis_platform]**: System project
+     - **test_adc_dummy_kernel [HLS]**: HLS component
+     - **test_adc_host [Application]**: Application component    
   
 2. Modify the kernel and host source codes and build the project:
-   - Under the **<em>Explorer</em>** window, replace the file `test_adc_kernels/src/dummy_kernel.cpp` in the template with this [`dummy_kernel.cpp`](src/vitis_adc_platform/dummy_kernel.cpp).
+   - Under the WORKSPACE view, replace the template file `dummy_kernel.cpp` in **test_adc_dummy_kernel [HLS]->Sources** with this [`dummy_kernel.cpp`](src/vitis_adc_platform/dummy_kernel.cpp).
    - Replace the file `test_adc/src/host.cpp` file in the template with this [`host.cpp`](src/vitis_adc_platform/host.cpp).
    - Specify `v++` linker connectivity:
      - Open `test_adc_system_hw_link/test_adc_system_hw_link.prj` from the **<em>Explorer</em>**
