@@ -188,7 +188,7 @@ to create and build the platform component `rfsoc_adc_vitis_platform` in `~/work
      ```shell
      cd ~/workspace
      mkdir mnt
-     sudo mount -t vfat /dev/sdj1/ mnt
+     sudo mount -t vfat /dev/sdj1 mnt
      ```
    - Copy boot files, bit file, and executable to the SD card:
      ```shell
