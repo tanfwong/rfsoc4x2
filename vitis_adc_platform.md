@@ -111,7 +111,7 @@ Download the Python script [`create_rfsoc_adc_vitis_platform.py`](src/vitis_adc_
 ```shell
 vitis -s create_rfsoc_adc_vitis_platform.py
 ```
-to create and build the platform component `rfsoc_adc_vitis_platform` in `~/workspace`. You can also run the python script line by line in the Vitis interacctive mode (`vitis -i`).
+to create and build the platform component `rfsoc_adc_vitis_platform` in `~/workspace`. You can also run the python script line by line in the Vitis interactive mode (`vitis -i`).
  
 ## Step 4: Test the Vitis Platform
 1. Create a new Vitis application project from template:
