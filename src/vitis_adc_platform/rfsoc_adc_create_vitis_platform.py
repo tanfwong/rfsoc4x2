@@ -61,6 +61,13 @@ domain.add_bif(bif)
 # Build platform
 platform.build()
 
+# Report info
+platform.report()
+domain.report()
+
+# Close the client connection and terminate the vitis server
+vitis.dispose()
+
 
 
 
