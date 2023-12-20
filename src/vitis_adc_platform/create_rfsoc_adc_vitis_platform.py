@@ -37,7 +37,7 @@ domain.set_sd_dir(sd_dir)
 # Generate BIF 
 # For some unknown reason
 # domain.generate_bif()
-# doesn't seem to work. So the generate the BIF ourselves
+# doesn't seem to work. So generate the BIF ourselves
 lines = [\
   '/* linux */',\
   'the_ROM_image:',\
