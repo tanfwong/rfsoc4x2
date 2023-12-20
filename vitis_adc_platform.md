@@ -114,20 +114,25 @@ vitis -s create_rfsoc_adc_vitis_platform.py
 to create and build the platform component `rfsoc_adc_vitis_platform` in `~/workspace`. You can also run the python script line by line in the Vitis interactive mode (`vitis -i`).
  
 ## Step 4: Test the Vitis Platform
-1. Create a new Vitis application project from template:
+1. Create a new Vitis system/application project from template:
    - Add Vitis example templates:
-     - Go to **<em>Vitis->Examples...</em>** to install example templates
-     - Click the `Download` button to install the templates from the **<em>Vitis Accel Examples Repository</em>**
+     - Go to **<em>View->Examples...</em>** or click the `Examples` button on the left widown edge to open the EXAMPLES view
+     - Click the `Download` (a downarrow pointing to a bar) button to install the templates from the **<em>Vitis Accel Examples Repository</em>**
      - Only need to do this once
-   - Go to **<em>File->New->Application Project...</em>** to create a new application project:
-     - Select the `rfsoc_adc_vitis_platform` created in Step 3. If the platform doesn't show up as a choice, you can press the **+** button to add it. Press the `Next>` button.
-     - Name the project `test_adc`. Press the `Next>` button.
-     - Under `Application settings` field:
-       - `Sysroot path:` Click the `Browse` button to select `~/workspace/rfsoc-linux/images/linux/sysroots/cortexa72-cortexa53-xilinx-linux`.
-       - `Root FS:` Click the `Browse` button to select `~/workspace/rfsoc-linux/images/linux/rootfs.ext4`.
-       - `Kernel Image:` Click the `Browse` button to select `~/workspace/rfsoc-linux/images/linux/Image`.
-       - Press the `Next>` button.
-   - Select **<em>Acceleration templates with PL and AIE accelerators->Host Examples->Data Transfer (C)</em>** to finish up the application project creation step.
+   - Select **<em>Vitis Accel Examples Repository->Host Examples->Data Transfer (C)</em>** in the EXAMPLES view to open up the example.
+   - Click the `Create Application from Template` button to create a system project from the example template:
+     - Name the project `test_adc`. Press the `Next` button.
+     - Select the `rfsoc_adc_vitis_platform` created in Step 3. If the platform doesn't show up as a choice, you can press the **+** button to add it. Press the `Next` button.
+     - Enter `Embedded Component Paths`:
+       - `Kernel Image`: Click the `Browse` button to select `~/workspace/rfsoc-linux/images/linux/Image`.
+       - `Root FS`: Click the `Browse` button to select `~/workspace/rfsoc-linux/images/linux/rootfs.ext4`.
+       - `Sysroot`: Click the `Browse` button to select `~/workspace/rfsoc-linux/images/linux/sysroots/cortexa72-cortexa53-xilinx-linux`.
+       - Check the `Update Workspace Perference` box so that  don't need to enter the info again.
+       - Press the `Next` and the `Finish` buttons to generate the project.
+   - You show see the following three components added to the `WORKSPACE` view:
+     - `test_adc [rfsoc_adc_vitis_platform]`: system project
+     - `test_adc_dummy_kernel [HLS]`: HLS component
+     - `test_adc_host [Application]: Application component    
   
 2. Modify the kernel and host source codes and build the project:
    - Under the **<em>Explorer</em>** window, replace the file `test_adc_kernels/src/dummy_kernel.cpp` in the template with this [`dummy_kernel.cpp`](src/vitis_adc_platform/dummy_kernel.cpp).
