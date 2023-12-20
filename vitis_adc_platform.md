@@ -192,7 +192,7 @@ to create and build the platform component `rfsoc_adc_vitis_platform` in `~/work
      ```
    - Copy boot files, bit file, and executable to the SD card:
      ```shell
-     cp ~/workspace/test_adc_system/Hardware/package/sd_card/* mnt/
+     cp ~/workspace/test_adc/build/hw/package/package/sd_card/* mnt/
      sudo umount mnt
      ```
    - Put the SD card into the microSD slot of the RFSoC4x2 board.
