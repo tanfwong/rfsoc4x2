@@ -221,7 +221,7 @@ to create and build the platform component `rfsoc_adc_vitis_platform` in `~/work
 5. Run the `test_adc` app to grab samples from the ADC:
    ```shell
    cd /run/media/boot-mmcblk0p1/
-   ./test_adc dummy_kernel.xclbin
+   ./test_adc_host dummy_kernel.xclbin
    ```
    If the app runs properly, should see the following printout:
    ```
