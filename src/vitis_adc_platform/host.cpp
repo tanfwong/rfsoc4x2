@@ -25,7 +25,7 @@
 #include <vector>
 #include <stdio.h>
 #define DATA_SIZE 8192
-#define DATA_WIDTH
+#define DATA_WIDTH 128
 
 typedef ap_uint<DATA_WIDTH> data_t;
 
