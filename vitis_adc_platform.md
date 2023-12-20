@@ -131,7 +131,7 @@ to create and build the platform component `rfsoc_adc_vitis_platform` in `~/work
    ```
 1. Create a new Vitis system project from template:
    - Add Vitis example templates:
-     - Go to **<em>View->Examples...</em>** or click the `Examples` button on the left widown edge to open the EXAMPLES view
+     - Go to **<em>View->Examples</em>** or click the `Examples` button on the left widown edge to open the EXAMPLES view
      - Click the `Download` (a downarrow pointing to a bar) button to install the templates from the **<em>Vitis Accel Examples Repository</em>**
      - Only need to do this once
    - Select **<em>Vitis Accel Examples Repository->Host Examples->Data Transfer (C)</em>** in the EXAMPLES view to open up the example.
