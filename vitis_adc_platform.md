@@ -177,18 +177,18 @@ to create and build the platform component `rfsoc_adc_vitis_platform` in `~/work
      ```shell
      lsblk -r -O
      ```
-     For example, my SD card is `/dev/sda`.
+     For example, my SD card is `/dev/sdj`.
    - Follow [these steps](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842385/How+to+format+SD+card+for+SD+boot) to create a boot partition (FAT32) and a root partition (EXT4) on `/dev/sda`.
    - Write the rootfs to the root (EXT4) partition:
      ```shell
-     sudo dd if=~/workspace/rfsoc-linux/images/linux/rootfs.ext4 of=/dev/sda2 bs=1M
-     sudo resize2fs /dev/sda2
+     sudo dd if=~/workspace/rfsoc-linux/images/linux/rootfs.ext4 of=/dev/sdj2 bs=1M
+     sudo resize2fs /dev/sdj2
      ```
    - Mount the boot (FAT32) partition:
      ```shell
      cd ~/workspace
      mkdir mnt
-     sudo mount -t vfat /dev/sda1/ mnt
+     sudo mount -t vfat /dev/sdj1/ mnt
      ```
    - Copy boot files, bit file, and executable to the SD card:
      ```shell
