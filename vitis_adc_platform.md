@@ -124,7 +124,7 @@ vitis -s create_rfsoc_adc_vitis_platform.py
 ```
 to create and build the platform component `rfsoc_adc_vitis_platform` in `~/workspace`. You can also run the python script line by line in the Vitis interactive mode (`vitis -i`).
  
-## Step 4: Test the Vitis Platform
+## Step 4: Test the Vitis Platform on the RFSoC4x2 board
 0. Start Vitis Unified IDE:
    ```shell
    vitis -w ~/workspace
@@ -237,4 +237,14 @@ to create and build the platform component `rfsoc_adc_vitis_platform` in `~/work
    The samples are stored in the file `wave.txt`.
 
    Here is an example plot of the captured samples when a 2 MHz sinusoid is fed to the ADC-D SMA connector:
-   ![2 MHz sinusoid](Figures/sin2M.png) 
+   ![2 MHz sinusoid](Figures/sin2M.png)
+
+## Step 5: Run Software and Hardware Emulation
+1. Software Emulation:
+   - Need to first install [Xilinx Runtime Library](https://www.xilinx.com/products/design-tools/vitis/xrt.html#gettingstarted) on the host machine running Vitis.
+   - Build:
+     - Under the FLOW view, select `test_adc` in **Component**   
+     - Click **:hammer: SOFTWARE EMULATION->Build All** to build the project
+   - Run:
+     - Click **SOFTWARE EMULATION->Run** (**SOFTWARE EMULATION->Debug**) to run (debug) the application
+     - I haven't figured out how (if possible at all) to emulate streaming samples to the dummy kernel. As a result, the run will stall. Hit the **Debug** (a traingle with a bug) button on the left side to show the DEBUG view and you may stop the emulation there.
