@@ -173,7 +173,7 @@ to create and build the platform component `rfsoc_adc_vitis_platform` in `~/work
        ![vitis_generated_hardware design](Figures/vitis_generated_block_design.png)
 
 3. Boot up the RFSoC board from an SD card:
-   - Insert the SD card into a card reader on a Linux machine. Check its device name:
+   - Insert the SD card into a card reader on the host machine running Vitis. Check its device name:
      ```shell
      lsblk -r -O
      ```
