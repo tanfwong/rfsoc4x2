@@ -246,5 +246,5 @@ to create and build the platform component `rfsoc_adc_vitis_platform` in `~/work
      - Under the FLOW view, select `test_adc` in **Component**   
      - Click **:hammer: SOFTWARE EMULATION->Build All** to build the project
    - Run:
-     - Click **SOFTWARE EMULATION->Run** (**SOFTWARE EMULATION->Debug**) to run (debug) the application
+     - Click **SOFTWARE EMULATION->Run** (**Debug**) to run (debug) the application
      - I haven't figured out how (if possible at all) to emulate streaming samples to the dummy kernel. As a result, the run will stall. Hit the **Debug** (a traingle with a bug) button on the left side to show the DEBUG view and you may stop the emulation there.
