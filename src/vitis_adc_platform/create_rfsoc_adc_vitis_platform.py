@@ -63,8 +63,8 @@ domain.add_bif(bif)
 lines = ['-M', 'arm-generic-fdt', '-serial', 'mon:stdio',\
          '-global', 'xlnx,zynqmp-boot.cpu-num=0',\
          '-global', 'xlnx,zynqmp-boot.use-pmufw=true', '-net', 'nic',\
-         '-device', 'loader,file=<xrt/qemu/bl31.elf>,cpu-num=0',\
-         '-device', 'loader,file=<xrt/qemu/u-boot.elf>',\
+         '-device', 'loader,file=<bl31.elf>,cpu-num=0',\
+         '-device', 'loader,file=<u-boot.elf>',\
          '-boot', 'mode=5']
 qemu = resources_path+'qemu_args.txt'
 with open(qemu, 'w') as f:
@@ -75,7 +75,7 @@ domain.add_qemu_args(qemu_option = "PS", path=qemu)
 domain.add_qemu_data(linux_image_dir)
 
 lines = ['-M', 'microblaze-fdt',\
-         '-device', 'loader,file=<xrt/qemu/pmufw.elf>',\
+         '-device', 'loader,file=<pmufw.elf>',\
          '-machine-path', '.',
          '-display', 'none']
 with open(pmu, 'w') as f:
