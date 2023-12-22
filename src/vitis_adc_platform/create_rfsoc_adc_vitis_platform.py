@@ -15,7 +15,7 @@ client.set_workspace(workspace)
 platform_name = 'rfsoc_adc_vitis_platform'
 platform_description = 'A Vitis extensible platform with 1 ADC for the RFSoC4x2 board'
 platform_hw = 'rfsoc_adc_hardware/rfsoc_adc_hardware.xsa'
-platform_domain = 'linux_xrt'
+platform_domain = 'xrt'
 linux_image_dir = workspace+'/rfsoc-linux/images/linux/'
 platform_fsbl = linux_image_dir+'zynqmp_fsbl.elf'
 platform_pmu = linux_image_dir+'pmufw.elf'
