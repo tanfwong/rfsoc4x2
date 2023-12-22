@@ -51,12 +51,38 @@ lines = [\
   '  [destination_cpu=a53-0, exception_level=el-2] <uboot,'+linux_image_dir+'u-boot.elf>',\
   '}'
 ]
-bif = workspace+'/'+platform_name+'/resources/linux.bif'
+resources_path = 'workspace+'/'+platform_name+'/resources/'
+bif = resources_path+'linux.bif'
 with open(bif, 'w') as f:
     for line in lines:
         f.write(f"{line}\n")
-
+f.close()
 domain.add_bif(bif)
+
+# Generate emulation argument files
+lines = ['-M', 'arm-generic-fdt', '-serial', 'mon:stdio',\
+         '-global', 'xlnx,zynqmp-boot.cpu-num=0',\
+         '-global', 'xlnx,zynqmp-boot.use-pmufw=true', '-net', 'nic',\
+         '-device', 'loader,file=<xrt/qemu/bl31.elf>,cpu-num=0',\
+         '-device', 'loader,file=<xrt/qemu/u-boot.elf>',\
+         '-boot', 'mode=5']
+qemu = resources_path+'qemu_args.txt'
+with open(qemu, 'w') as f:
+    for line in lines:
+        f.write(f"{line}\n")
+f.close()
+domain.add_qemu_args(qemu_option = "PMU", path=qemu)
+domain.add_qemu_data(linux_image_dir)
+
+lines = ['-M', 'microblaze-fdt',\
+         '-device', 'loader,file=<xrt/qemu/pmufw.elf>',\
+         '-machine-path', '.',
+         '-display', 'none']
+with open(pmu, 'w') as f:
+    for line in lines:
+        f.write(f"{line}\n")
+f.close()
+
 
 # Build platform
 platform.build()
