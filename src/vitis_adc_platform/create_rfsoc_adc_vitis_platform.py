@@ -51,7 +51,7 @@ lines = [\
   '  [destination_cpu=a53-0, exception_level=el-2] <uboot,'+linux_image_dir+'u-boot.elf>',\
   '}'
 ]
-resources_path = 'workspace+'/'+platform_name+'/resources/'
+resources_path = workspace+'/'+platform_name+'/resources/'
 bif = resources_path+'linux.bif'
 with open(bif, 'w') as f:
     for line in lines:
