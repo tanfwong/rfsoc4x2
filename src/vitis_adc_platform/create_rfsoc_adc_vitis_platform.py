@@ -78,6 +78,7 @@ lines = ['-M', 'microblaze-fdt',\
          '-device', 'loader,file=<pmufw.elf>',\
          '-machine-path', '.',
          '-display', 'none']
+pmu = resources_path+'pmu_args.txt'
 with open(pmu, 'w') as f:
     for line in lines:
         f.write(f"{line}\n")
