@@ -71,7 +71,7 @@ with open(qemu, 'w') as f:
     for line in lines:
         f.write(f"{line}\n")
 f.close()
-domain.add_qemu_args(qemu_option = "PMU", path=qemu)
+domain.add_qemu_args(qemu_option = "PS", path=qemu)
 domain.add_qemu_data(linux_image_dir)
 
 lines = ['-M', 'microblaze-fdt',\
@@ -82,6 +82,7 @@ with open(pmu, 'w') as f:
     for line in lines:
         f.write(f"{line}\n")
 f.close()
+domain.add_qemu_args(qemu_option = "PMU", path=pmu)
 
 
 # Build platform
