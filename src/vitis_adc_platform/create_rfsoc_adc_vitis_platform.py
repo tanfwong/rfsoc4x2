@@ -62,7 +62,8 @@ domain.add_bif(bif)
 # Generate emulation argument files
 lines = ['-M', 'arm-generic-fdt', '-serial', 'mon:stdio',\
          '-global', 'xlnx,zynqmp-boot.cpu-num=0',\
-         '-global', 'xlnx,zynqmp-boot.use-pmufw=true', '-net', 'nic',\
+         '-global', 'xlnx,zynqmp-boot.use-pmufw=true',\
+         '-net', 'nic', '-net', 'user',\
          '-device', 'loader,file=<bl31.elf>,cpu-num=0',\
          '-device', 'loader,file=<u-boot.elf>',\
          '-boot', 'mode=5']
