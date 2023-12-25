@@ -1,4 +1,4 @@
-# A Vitis Extensible Platform with a single ADC for RFSoC4x2 (Vitis 2023.2 Unified IDE)
+# A Vitis Extensible Platform with a single ADC for RFSoC4x2 (Vitis 2023.2.1 Unified IDE)
 This is an attempt to migrate [A Vitis Extensible Platform with a single ADC for RFSoC4x2](./vitis_adc_platform_classicIDE.md) to the Vitis 2023.2 Unified IDE. Steps 0 to 2 are exactly the same as those before.
 
 
