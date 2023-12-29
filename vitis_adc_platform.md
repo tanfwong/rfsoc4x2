@@ -253,5 +253,5 @@ to create and build the platform component `rfsoc_adc_vitis_platform` in `~/work
    - It appears that Vitis 2023.2.1 doesn't support hardware emulation for the `xczu48dr` chip on the RFSoC4x2 board.
    - In fact, Vitis doesn't seem to recognize the `xczu48dr` chip:
       - In `vitis-comp.json` created for the Vitis platform, the field `supportedFamily` is set to the generic value `fpga`, rather than the value `zynquplusRFSOC` exported by Vivado.
-      - The choice **HARDWARE EMULATION->Start Emulator** doesn't show up under the FLOW view. The hardware emulation build still runs fine, but QEMU hangs after it is started from the script file provided.
+      - The choice **HARDWARE EMULATION->Start Emulator** doesn't show up under the FLOW view. The hardware emulation build still runs fine (need to uncheck the **Do not create image** box in `package.cfg`), but QEMU hangs after it is started from the script file provided.
    - I tried to manually change all instances of `zynquplusRFSOC` to `zynquplus` in the file `xsa.json` in the hardware archives `rfsoc_adc_hardware.xsa` and `rfsoc_adc_hardware_emu.xsa`, and the value of the field `supportedFamily` in `vitis-comp.json` to `zynquplus` in order to trick Vitis to think `xczu48dr` was a `zynquplus`. The choice **HARDWARE EMULATION->Start Emulator** showed up under the FLOW view, but QEMU still hung.
