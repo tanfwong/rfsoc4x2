@@ -29,7 +29,7 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
    - The Vivado project is named `rfsoc_adc_hardware`.
    - ADC-D (ADC0 on tile 224) on the RFSoC4x2 board is enabled with sampling rate set to 2.4576 GSps.
 
-3. Export the platform `rfsoc_adc_hardware.xsa` for hardware and platform `rfsoc_adc_hardware_emu.xsa`hardware emulation. 
+3. Export the platform `rfsoc_adc_hardware.xsa` for hardware and platform `rfsoc_adc_hardware_emu.xsa` for hardware emulation. 
 
 ## Step 2: Use Petalinux to create boot files, device tree file, linux image, rootfs, and sysroot
 1. Create a Petalinux project: 
@@ -248,3 +248,6 @@ to create and build the platform component `rfsoc_adc_vitis_platform` in `~/work
    - Run:
      - Click **SOFTWARE EMULATION->Run** (**Debug**) to run (debug) the application
      - I haven't figured out how (if possible at all) to emulate streaming samples to the dummy kernel. As a result, the run will stall. Hit the **Debug** (a traingle with a bug) button on the left side to show the DEBUG view and you may stop the emulation there.
+    
+2. Hardware Emulation:
+   - It appears that Vitis 2023.2.1 doesn't support hardware emulation for the xczu48dr chip on the RFSoC4x2 board.
