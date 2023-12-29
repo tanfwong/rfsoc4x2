@@ -17,10 +17,10 @@ If not already installed, do the following steps to install the RFSoC board file
    ```
 
 ## Step 1: Create a Vivado Hardware Design
-1. Download the TCL script [rfsoc_adc_hardware.tcl](src/vitis_adc_platform/rfsoc_adc_hardware.tcl) to `~/workspace`.
+1. Download the TCL script [rfsoc_adc_hardware.tcl](src/vitis_adc_platform/rfsoc_adc_hardware_2023_2_1.tcl) to `~/workspace`.
 2. Open Vivado and source the TCL script a TCL shell, or simply do
    ```bash
-   vivado -source rfsoc_adc_hardware.tcl
+   vivado -source rfsoc_adc_hardware_2023_2_1.tcl
    ```
    to generate the following block design:
    ![hardware design](Figures/block_design_adc_platform.png)
@@ -29,7 +29,7 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
    - The Vivado project is named `rfsoc_adc_hardware`.
    - ADC-D (ADC0 on tile 224) on the RFSoC4x2 board is enabled with sampling rate set to 2.4576 GSps.
 
-3. Export the platform `rfsoc_adc_hardware.xsa` for both hardware and hardware emulation. 
+3. Export the platform `rfsoc_adc_hardware.xsa` for hardware and platform `rfsoc_adc_hardware_emu.xsa`hardware emulation. 
 
 ## Step 2: Use Petalinux to create boot files, device tree file, linux image, rootfs, and sysroot
 1. Create a Petalinux project: 
