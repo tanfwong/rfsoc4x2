@@ -47,7 +47,7 @@ shutil.copy(linux_image_dir+'boot.scr', boot_dir+'boot.scr')
 # Add info to domain
 domain = platform.get_domain(platform_domain)
 domain.add_boot_dir(boot_dir)
-#:domain.set_sd_dir(boot_dir)
+#domain.set_sd_dir(boot_dir)
 domain.add_qemu_data(qemu_dir)
 
 # Generate BIF 
