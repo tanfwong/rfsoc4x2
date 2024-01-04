@@ -23,7 +23,7 @@ If not already installed, do the following steps to install the RFSoC board file
    vivado -source rfsoc_adc_hardware_2023_2_1.tcl
    ```
    to generate the following block design:
-   ![hardware design](Figures/block_design_adc_platform.png)
+   ![hardware design](Figures/rfsoc_adc_block_design.png)
    which adds an [RF Data Converter](https://www.xilinx.com/products/intellectual-property/rf-data-converter.html#overview) IP to a slightly modified version of the hardware design in [Vitis Platform Creation Tutorial for
 ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platform_Creation/Design_Tutorials/02-Edge-AI-ZCU104/step1.md).
    - The Vivado project is named `rfsoc_adc_hardware`.
