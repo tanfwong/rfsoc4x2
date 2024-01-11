@@ -245,10 +245,9 @@ to create and build the platform component `rfsoc_adc_vitis_platform` in `~/work
      - Click **:hammer: SOFTWARE EMULATION->Build All** to build the project
    - Run:
      - Click **SOFTWARE EMULATION->Run** (**Debug**) to run (debug) the application
-     - I haven't figured out how (if possible at all) to emulate streaming samples to the dummy kernel. As a result, the run will stall. Hit the **Debug** (a traingle with a bug) button on the left side to show the DEBUG view and you may stop the emulation there.
+     - I haven't figured out how (there is a way in the Vitis manual but haven't gotten to test that) to emulate streaming samples to the dummy kernel. As a result, the run will stall. Hit the **Debug** (a traingle with a bug) button on the left side to show the DEBUG view and you may stop the emulation there.
     
 2. Hardware Emulation:
-   - It appears that I have missed some simulation steps when generating the emulation `xsa` file. Will try again.
    - It appears that Vitis 2023.2.1 doesn't support hardware emulation for the `xczu48dr` chip on the RFSoC4x2 board.
    - In fact, Vitis doesn't seem to recognize the `xczu48dr` chip:
       - In `vitis-comp.json` created for the Vitis platform, the field `supportedFamily` is set to the generic value `fpga`, rather than the value `zynquplusRFSOC` exported by Vivado.
