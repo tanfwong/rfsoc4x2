@@ -86,7 +86,11 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
                 stdout-path = "serial0:115200n8";
         };
      };
-
+     
+     &sdhci0 {
+                no-1-8-v;
+     };
+     
      &spi0 {
         lmk@0 {
                 compatible = "ti,lmk04828";
