@@ -111,6 +111,21 @@ ZCU104-Step 1](https://github.com/Xilinx/Vitis-Tutorials/blob/2023.1/Vitis_Platf
                 num_bytes = <3>;
         };
      };
+
+     &gem1 {
+        status = "okay";
+        phy-handle = <&phy0>;
+        phy-mode = "rgmii-id";
+        /* pinctrl-names = "default";
+        pinctrl-0 = <&pinctrl_gem1_default>; */
+        phy0: phy@f {
+                reg = <0xf>;
+                ti,rx-internal-delay = <0x8>;
+                ti,tx-internal-delay = <0xa>;
+                ti,fifo-depth = <0x1>;
+                ti,dp83867-rxctrl-strap-quirk;
+        };
+     };
      ```
 6. Build the image and sysroot:
    ```bash
